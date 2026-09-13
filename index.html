@@ -64,8 +64,21 @@
         <div class="card">
             <div class="welcome">Welcome to FreshCart!</div>
             <p>Order fresh and quality vegetables from your home.</p>
-            <button onclick="alert('FreshCart is coming soon!')">Start Shopping</button>
+            <button onclick="showProducts()">Start Shopping</button>
         </div>
     </div>
+    <div id="products" style="display:none; text-align:center; padding:20px;">
+    <h2>🥬 Fresh Vegetables</h2>
+    <div style="background:white; padding:15px; border-radius:10px; max-width:300px; margin:auto;">
+        <p>🍅 টমেটো - ৩০ টাকা</p>
+        <button>Add to Cart</button>
+    </div>
+</div>
+
+<script>
+function showProducts(){
+    document.getElementById('products').style.display = 'block';
+}
+</script>
 </body>
 </html>
