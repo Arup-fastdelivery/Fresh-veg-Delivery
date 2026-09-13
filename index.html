@@ -69,8 +69,15 @@
     </div>
     <div id="products" style="display:none; text-align:center; padding:20px;">
     <h2>🥬 Fresh Vegetables</h2>
-    <div style="background:white; padding:15px; border-radius:10px; max-width:300px; margin:auto;">
-        <p>🍅 টমেটো - ৩০ টাকা</p>
+        <div style="background:white; padding:20px; border-radius:12px; max-width:320px; margin:auto;">
+        <h3>🍅 টমেটো</h3>
+        <p>দাম: ৩০ টাকা / কেজি</p>
+        <div style="margin: 15px 0;">
+            <button onclick="changeQty(-1)" style="padding:5px 12px;">-</button>
+            <span id="qty" style="margin:0 10px; font-weight:bold;">1</span> কেজি
+            <button onclick="changeQty(1)" style="padding:5px 12px;">+</button>
+        </div>
+        <p style="font-weight:bold; color:#15803d;">মোট: <span id="totalPrice">৩০</span> টাকা</p>
         <button onclick="addToCart()">Add to Cart</button>
     </div>
 </div>
@@ -80,8 +87,23 @@ function showProducts(){
     document.getElementById('products').style.display = 'block';
 }
 </script>
-    function addToCart(){
-    alert("🍅 টমেটো Cart-এ যোগ হয়েছে!");
+}<script>
+let pricePerKg = 30;
+let quantity = 1;
+
+function showProducts(){
+    document.getElementById('products').style.display = 'block';
 }
+function changeQty(change){
+    quantity += change;
+    if(quantity < 1) quantity = 1;
+    document.getElementById('qty').innerText = quantity;
+    document.getElementById('totalPrice').innerText = pricePerKg * quantity;
+}
+function addToCart(){
+    let total = pricePerKg * quantity;
+    alert("🍅 " + quantity + " কেজি টমেটো Cart-এ যোগ হয়েছে! মোট: " + total + " টাকা");
+}
+</script>
 </body>
 </html>
