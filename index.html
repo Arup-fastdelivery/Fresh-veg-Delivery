@@ -159,18 +159,8 @@
    <!-- 11. করলা -->     
     <div class="veg-card"
         <img src="korola.jpg" style="width:100%; height:150px; object-fit:cover; border-radius:12px;">
-<h3>করলা</h3>
-        <p>দাম: ৫০ টাকা / কেজি</p>
-        <div>
-            <button class="small" onclick="changeQty('korola', -1)">-</button>
-            <span id="qty-korola" style="font-weight:bold; margin:0 10px;">1</span> কেজি
-            <button class="small" onclick="changeQty('korola', 1)">+</button>
-        </div>
-        <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-korola">৫০</span> টাকা</p>
-        <button onclick="addToCart('korola')">Add to Cart</button>
-    </div>
 
-   <!-- 12. পটল -->     
+   <!-- 11. পটল -->     
     <div class="veg-card">
         <img src="potol.jpg" style="width:100%; height:150px; object-fit:cover; border-radius:12px;">
 <h3>পটল</h3>
@@ -181,20 +171,16 @@
         <button onclick="addToCart('potol')">Add to Cart</button>
     </div>
 
-        <!-- 11. করলা -->     
-    <div class="veg-card"
+   <!-- 12. করলা -->     
+    <div class="veg-card">
         <img src="korola.jpg" style="width:100%; height:150px; object-fit:cover; border-radius:12px;">
 <h3>করলা</h3>
-        <p>দাম: ৫০ টাকা / কেজি</p>
-        <div>
-            <button class="small" onclick="changeQty('korola', -1)">-</button>
+        <p>দাম: ৫০ টাকা / কেজি</p><div><button class="small" onclick="changeQty('korola', -1)">-</button>
             <span id="qty-korola" style="font-weight:bold; margin:0 10px;">1</span> কেজি
-            <button class="small" onclick="changeQty('korola', 1)">+</button>
-        </div>
-        <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-korola">৫০</span> টাকা</p>
+            <button class="small" onclick="changeQty('potol', 1)">+</button>
+        </div><p style="color:#15803d; font-weight:bold;">মোট: <span id="total-korola">৫০</span> টাকা</p>
         <button onclick="addToCart('korola')">Add to Cart</button>
-    </div>
-
+    </div>  
         
 <script>
 let prices = { tomato: 30, potato: 25, begun: 40, fulkopi: 35, badhakopi: 30, peyaj: 45, lau: 20, palong: 15, dheros: 30, korola: 50, potol: 40 };
