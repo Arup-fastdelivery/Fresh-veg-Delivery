@@ -42,6 +42,95 @@
             <button onclick="addToCart()">Add to Cart</button>
         </div>
     </div>
+     <!-- 1. টমেটো -->
+        <div class="veg-card">
+            <h3>🍅 টমেটো</h3>
+            <p>দাম: ৩০ টাকা / কেজি</p>
+            <div>
+                <button class="small" onclick="changeQty('tomato', -1)">-</button>
+                <span id="qty-tomato" style="font-weight:bold; margin:0 10px;">1</span> কেজি
+                <button class="small" onclick="changeQty('tomato', 1)">+</button>
+            </div>
+            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-tomato">৩০</span> টাকা</p>
+            <button onclick="addToCart('tomato')">Add to Cart</button>
+        </div>
+
+        <!-- 2. আলু -->
+        <div class="veg-card">
+            <h3>🥔 আলু</h3>
+            <p>দাম: ২৫ টাকা / কেজি</p>
+            <div>
+                <button class="small" onclick="changeQty('potato', -1)">-</button>
+                <span id="qty-potato" style="font-weight:bold; margin:0 10px;">1</span> কেজি
+                <button class="small" onclick="changeQty('potato', 1)">+</button>
+            </div>
+            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-potato">২৫</span> টাকা</p>
+            <button onclick="addToCart('potato')">Add to Cart</button>
+        </div>
+
+        <!-- 3. বেগুন -->
+        <div class="veg-card">
+            <h3>🍆 বেগুন</h3>
+            <p>দাম: ৪০ টাকা / কেজি</p>
+            <div>
+                <button class="small" onclick="changeQty('begun', -1)">-</button>
+                <span id="qty-begun" style="font-weight:bold; margin:0 10px;">1</span> কেজি
+                <button class="small" onclick="changeQty('begun', 1)">+</button>
+            </div>
+            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-begun">৪০</span> টাকা</p>
+            <button onclick="addToCart('begun')">Add to Cart</button>
+        </div>
+
+        <!-- 4. ফুলকপি -->
+        <div class="veg-card">
+            <h3>🥦 ফুলকপি</h3>
+            <p>দাম: ৩৫ টাকা / পিস</p>
+            <div>
+                <button class="small" onclick="changeQty('fulkopi', -1)">-</button>
+                <span id="qty-fulkopi" style="font-weight:bold; margin:0 10px;">1</span> পিস
+                <button class="small" onclick="changeQty('fulkopi', 1)">+</button>
+            </div>
+            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-fulkopi">৩৫</span> টাকা</p>
+            <button onclick="addToCart('fulkopi')">Add to Cart</button>
+        </div>
+
+        <!-- 5. বাঁধাকপি -->
+        <div class="veg-card">
+            <h3>🥬 বাঁধাকপি</h3>
+            <p>দাম: ৩০ টাকা / পিস</p>
+            <div>
+                <button class="small" onclick="changeQty('badhakopi', -1)">-</button>
+                <span id="qty-badhakopi" style="font-weight:bold; margin:0 10px;">1</span> পিস
+                <button class="small" onclick="changeQty('badhakopi', 1)">+</button>
+            </div>
+            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-badhakopi">৩০</span> টাকা</p>
+            <button onclick="addToCart('badhakopi')">Add to Cart</button>
+        </div>
+
+        <!-- 6. পেঁয়াজ -->
+        <div class="veg-card">
+            <h3>🧅 পেঁয়াজ</h3>
+            <p>দাম: ৪৫ টাকা / কেজি</p>
+            <div>
+                <button class="small" onclick="changeQty('peyaj', -1)">-</button>
+                <span id="qty-peyaj" style="font-weight:bold; margin:0 10px;">1</span> কেজি
+                <button class="small" onclick="changeQty('peyaj', 1)">+</button>
+            </div>
+            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-peyaj">৪৫</span> টাকা</p>
+            <button onclick="addToCart('peyaj')">Add to Cart</button>
+        </div>
+
+    </div>
+
+<script>
+let prices = { tomato: 30, potato: 25, begun: 40, fulkopi: 35, badhakopi: 30, peyaj: 45 };
+let quantities = { tomato: 1, potato: 1, begun: 1, fulkopi: 1, badhakopi: 1, peyaj: 1 };
+let names = { tomato: "🍅 টমেটো", potato: "🥔 আলু", begun: "🍆 বেগুন", fulkopi: "🥦 ফুলকপি", badhakopi: "🥬 বাঁধাকপি", peyaj: "🧅 পেঁয়াজ" };
+let units = { tomato: "কেজি", potato: "কেজি", begun: "কেজি", fulkopi: "পিস", badhakopi: "পিস", peyaj: "কেজি" };
+
+function showProducts(){
+    document.getElementById('products').style.display = 'flex';
+}
 
 <script>
 let pricePerKg = 30;
