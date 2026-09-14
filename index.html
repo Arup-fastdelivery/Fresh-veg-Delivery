@@ -27,7 +27,17 @@
         <p>Order fresh and quality vegetables from your home.</p>
         <button onclick="showProducts()">Start Shopping</button>
     </div>
+<!-- My Cart Section -->
+<div id="cart" style="background:white; padding:20px; margin:20px; border-radius:12px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+    <h2>🛒 My Cart</h2>
+    <div id="cart-items" style="margin:15px 0;">
+        <p>Cart খালি আছে। সবজি Add করুন।</p>
+    </div>
+    <h3 style="color:#15803d;">মোট বিল: <span id="grand-total">0</span> টাকা</h3>
+    <button onclick="checkout()" style="background:#22c55e; color:white; padding:10px 20px; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">Checkout via WhatsApp</button>
+</div>
 
+<div id="products" ...
     <div id="products" class="products" style="display:none;">
 
         <!-- 1. টমেটো -->
@@ -89,7 +99,7 @@
         <!-- 5. বাঁধাকপি -->
         <div class="veg-card">
             <img src="badhakopi.jpg" style="width:100%; height:150px; object-fit:cover; border-radius:12px;">
-<h3>বাঁধাকপ</h3>
+<h3>বাঁধাকপি</h3>
             <p>দাম: ৩০ টাকা / পিস</p>
             <div>
                 <button class="small" onclick="changeQty('badhakopi', -1)">-</button>
@@ -185,52 +195,53 @@
         <button onclick="addToCart('potol')">Add to Cart</button>
     </div>
 
-             
-<script>
-let prices = { tomato: 30, potato: 25, begun: 40, fulkopi: 35, badhakopi: 30, peyaj: 45, lau: 20, palong: 15, dheros: 30, korola: 50, potol: 40};
-let quantities = { tomato: 1, potato: 1, begun: 1, fulkopi: 1, badhakopi: 1, peyaj: 1, lau: 1, palong: 1, dheros: 1, korola: 1, potol: 1};
-let names = {
-    tomato: "🍅 টমেটো",
-    potato: "🥔 আলু",
-    begun: "🍆 বেগুন",
-    fulkopi: "🥦 ফুলকপি",
-    badhakopi: "🥬 বাঁধাকপি",
-    peyaj: "🧅 পেঁয়াজ",
-    lau: "🥒 লাউ",
-    palong: "🥬 পালং শাক",
-    dheros: "🥒 ঢেঁড়স",
-    korola: "🥒 করলা",
-    potol: "🥒 পটল"
-};
-let units = {
-    tomato: "কেজি",
-    potato: "কেজি",
-    begun: "কেজি",
-    fulkopi: "পিস",
-    badhakopi: "পিস",
-    peyaj: "কেজি",
-    lau: "পিস",
-    palong: "আঁটি",
-    dheros: "কেজি",
-    korola: "কেজি",
-    potol: "কেজি"
-};
+  <script>
+let prices = { tomato: 30, potato: 25, begun: 30, dheros: 30, korola: 40, potol: 35, badhakopi: 30, peyaj: 45, lau: 20, fulkopi: 40, palong: 20 };
+let quantities = { tomato: 1, potato: 1, begun: 1, dheros: 1, korola: 1, potol: 1, badhakopi: 1, peyaj: 1, lau: 1, fulkopi: 1, palong: 1 };
+let names = { tomato: "টমেটো", potato: "আলু", begun: "বেগুন", dheros: "ঢেঁড়স", korola: "করলা", potol: "পটল", badhakopi: "বাঁধাকপি", peyaj: "পেঁয়াজ", lau: "লাউ", fulkopi: "ফুলকপি", palong: "পালং শাক" };
+let units = { tomato: "কেজি", potato: "কেজি", begun: "কেজি", dheros: "কেজি", korola: "কেজি", potol: "কেজি", badhakopi: "পিস", peyaj: "কেজি", lau: "পিস", fulkopi: "পিস", palong: "আঁটি" };
 
-function showProducts(){
-    document.getElementById('products').style.display = 'flex';
-}
+let cart = {};
+let grandTotal = 0;
 
-function changeQty(item, change){
-    quantities[item] += change;
+function changeQty(item, delta){
+    quantities[item] += delta;
     if(quantities[item] < 1) quantities[item] = 1;
-    document.getElementById('qty-' + item).innerText = quantities[item];
-    document.getElementById('total-' + item).innerText = prices[item] * quantities[item];
+    document.getElementById('qty-'+item).innerText = quantities[item];
+    document.getElementById('total-'+item).innerText = prices[item] * quantities[item];
 }
 
 function addToCart(item){
-    let total = prices[item] * quantities[item];
-    alert(names[item] + " " + quantities[item] + " " + units[item] + " Cart-এ যোগ হয়েছে! মোট: " + total + " টাকা");
+    if(!cart[item]) cart[item] = 0;
+    cart[item] += quantities[item];
+    updateCartUI();
 }
-</script>
-</body>
-</html>
+
+function updateCartUI(){
+    let cartDiv = document.getElementById('cart-items');
+    let totalSpan = document.getElementById('grand-total');
+    cartDiv.innerHTML = "";
+    grandTotal = 0;
+    for(let key in cart){
+        let price = prices[key] * cart[key];
+        grandTotal += price;
+        cartDiv.innerHTML += `<p>${names[key]} - ${cart[key]} ${units[key]} = ${price} টাকা</p>`;
+    }
+    if(Object.keys(cart).length === 0){
+        cartDiv.innerHTML = "<p>Cart খালি আছে। সবজি Add করুন।</p>";
+    }
+    totalSpan.innerText = grandTotal;
+}
+
+function checkout(){
+    if(grandTotal === 0){ alert("Cart খালি আছে!"); return; }
+    let msg = "নমস্কার, আমি অর্ডার করতে চাই:%0A";
+    for(let key in cart){
+        msg += `${names[key]} - ${cart[key]} ${units[key]} = ${prices[key]*cart[key]} টাকা%0A`;
+    }
+    msg += `%0Aমোট বিল: ${grandTotal} টাকা`;
+    window.open(`https://wa.me/919999999999?text=${msg}`, '_blank');
+}
+</script>           
+
+    
