@@ -188,9 +188,33 @@
              
 <script>
 let prices = { tomato: 30, potato: 25, begun: 40, fulkopi: 35, badhakopi: 30, peyaj: 45, lau: 20, palong: 15, dheros: 30, korola: 50, potol: 40};
-let quantities = { tomato: 1, potato: 1, begun: 1, fulkopi: 1, badhakopi: 1, peyaj: 1, lau: 1, palong: 1, dheros: 1, korola: 1, potol: 1,};
-let names = { tomato: "🍅 টমেটো", potato: "🥔 আলু", begun: "🍆 বেগুন", fulkopi: "🥦 ফুলকপি", badhakopi: "🥬 বাঁধাকপি", peyaj: "🧅 পেঁয়াজ" };
-let units = { tomato: "কেজি", potato: "কেজি", begun: "কেজি", fulkopi: "পিস", badhakopi: "পিস", peyaj: "কেজি" };
+let quantities = { tomato: 1, potato: 1, begun: 1, fulkopi: 1, badhakopi: 1, peyaj: 1, lau: 1, palong: 1, dheros: 1, korola: 1, potol: 1};
+let names = {
+    tomato: "🍅 টমেটো",
+    potato: "🥔 আলু",
+    begun: "🍆 বেগুন",
+    fulkopi: "🥦 ফুলকপি",
+    badhakopi: "🥬 বাঁধাকপি",
+    peyaj: "🧅 পেঁয়াজ",
+    lau: "🥒 লাউ",
+    palong: "🥬 পালং শাক",
+    dheros: "🥒 ঢেঁড়স",
+    korola: "🥒 করলা",
+    potol: "🥒 পটল"
+};
+let units = {
+    tomato: "কেজি",
+    potato: "কেজি",
+    begun: "কেজি",
+    fulkopi: "পিস",
+    badhakopi: "পিস",
+    peyaj: "কেজি",
+    lau: "পিস",
+    palong: "আঁটি",
+    dheros: "কেজি",
+    korola: "কেজি",
+    potol: "কেজি"
+};
 
 function showProducts(){
     document.getElementById('products').style.display = 'flex';
@@ -208,6 +232,5 @@ function addToCart(item){
     alert(names[item] + " " + quantities[item] + " " + units[item] + " Cart-এ যোগ হয়েছে! মোট: " + total + " টাকা");
 }
 </script>
-
 </body>
 </html>
