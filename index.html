@@ -121,9 +121,18 @@
             <button onclick="addToCart('lau')">Add to Cart</button>
         </div>
 
-    <div class="veg-card"><h3>🌿 পালং শাক</h3><p>দাম: ১৫ টাকা / আঁটি</p><div><button class="small" onclick="changeQty('palong', -1)">-</button><span id="qty-palong" style="font-weight:bold; margin:0 10px;">1</span> আঁটি<button class="small" onclick="changeQty('palong', 1)">+</button></div><p style="color:#15803d; font-weight:bold;">মোট: <span id="total-palong">১৫</span> টাকা</p><button onclick="addToCart('palong')">Add to Cart</button></div>            
+    <div class="veg-card">
+        <h3>🌿 পালং শাক</h3>
+        <p>দাম: ১৫ টাকা / আঁটি</p>
+        <div>
+            <button class="small" onclick="changeQty('palong', -1)">-</button>
+            <span id="qty-palong" style="font-weight:bold; margin:0 10px;">1</span>আঁটি 
+            <button class="small" onclick="changeQty('palong', 1)">+</button></div><p style="color:#15803d; font-weight:bold;">মোট: <span id="total-palong">১৫</span> টাকা</p><button onclick="addToCart('palong')">Add to Cart</button></div>            
     </div>
 
+    <div class="veg-card"><h3>🥒 ঢেঁড়স</h3><p>দাম: ৩০ টাকা / কেজি</p><div><button class="small" onclick="changeQty('dheros', -1)">-</button><span id="qty-dheros" style="font-weight:bold; margin:0 10px;">1</span> কেজি<button class="small" onclick="changeQty('dheros', 1)">+</button></div><p style="color:#15803d; font-weight:bold;">মোট: <span id="total-dheros">৩০</span> টাকা</p><button onclick="addToCart('dheros')">Add to Cart</button></div>
+        <div class="veg-card"><h3>🥒 করলা</h3><p>দাম: ৫০ টাকা / কেজি</p><div><button class="small" onclick="changeQty('korola', -1)">-</button><span id="qty-korola" style="font-weight:bold; margin:0 10px;">1</span> কেজি<button class="small" onclick="changeQty('korola', 1)">+</button></div><p style="color:#15803d; font-weight:bold;">মোট: <span id="total-korola">৫০</span> টাকা</p><button onclick="addToCart('korola')">Add to Cart</button></div>
+    <div class="veg-card"><h3>🥒 পটল</h3><p>দাম: ৪০ টাকা / কেজি</p><div><button class="small" onclick="changeQty('potol', -1)">-</button><span id="qty-potol" style="font-weight:bold; margin:0 10px;">1</span> কেজি<button class="small" onclick="changeQty('potol', 1)">+</button></div><p style="color:#15803d; font-weight:bold;">মোট: <span id="total-potol">৪০</span> টাকা</p><button onclick="addToCart('potol')">Add to Cart</button></div>
 <script>
 let prices = { tomato: 30, potato: 25, begun: 40, fulkopi: 35, badhakopi: 30, peyaj: 45 };
 let quantities = { tomato: 1, potato: 1, begun: 1, fulkopi: 1, badhakopi: 1, peyaj: 1 };
