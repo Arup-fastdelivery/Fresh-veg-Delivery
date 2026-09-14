@@ -7,10 +7,10 @@
     <style>
         body { margin: 0; font-family: Arial, sans-serif; background: #f4fff4; color: #222; }
         header { background: #16a34a; color: white; padding: 25px 20px; text-align: center; }
-       .container { padding: 20px; text-align: center; }
-       .welcome { font-size: 24px; font-weight: bold; color: #15803d; margin-bottom: 10px; }
-       .products { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
-       .veg-card { background: white; padding: 20px; border-radius: 12px; width: 260px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }
+      .container { padding: 20px; text-align: center; }
+      .welcome { font-size: 24px; font-weight: bold; color: #15803d; margin-bottom: 10px; }
+      .products { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
+      .veg-card { background: white; padding: 20px; border-radius: 12px; width: 260px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }
         button { background: #16a34a; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 15px; margin-top: 10px; }
         button.small { padding: 5px 12px; font-size: 16px; }
         button:hover { background: #15803d; }
@@ -27,6 +27,7 @@
         <p>Order fresh and quality vegetables from your home.</p>
         <button onclick="showProducts()">Start Shopping</button>
     </div>
+
 <!-- My Cart Section -->
 <div id="cart" style="background:white; padding:20px; margin:20px; border-radius:12px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
     <h2>🛒 My Cart</h2>
@@ -37,172 +38,164 @@
     <button onclick="checkout()" style="background:#22c55e; color:white; padding:10px 20px; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">Checkout via WhatsApp</button>
 </div>
 
-<div id="products" ...
-    <div id="products" class="products" style="display:none;">
-
+    <div id="products" class="products">
         <!-- 1. টমেটো -->
         <div class="veg-card">
             <img src="tomato.jpg" style="width:100%; height:150px; object-fit:cover; border-radius:12px;">
-<h3>টমেটো</h3>
+            <h3>টমেটো</h3>
             <p>দাম: ৩০ টাকা / কেজি</p>
             <div>
                 <button class="small" onclick="changeQty('tomato', -1)">-</button>
                 <span id="qty-tomato" style="font-weight:bold; margin:0 10px;">1</span> কেজি
                 <button class="small" onclick="changeQty('tomato', 1)">+</button>
             </div>
-            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-tomato">৩০</span> টাকা</p>
+            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-tomato">30</span> টাকা</p>
             <button onclick="addToCart('tomato')">Add to Cart</button>
         </div>
-
         <!-- 2. আলু -->
         <div class="veg-card">
             <img src="potato.jpg" style="width:100%; height:150px; object-fit:cover; border-radius:12px;">
-<h3>আলু</h3>
+            <h3>আলু</h3>
             <p>দাম: ২৫ টাকা / কেজি</p>
             <div>
                 <button class="small" onclick="changeQty('potato', -1)">-</button>
                 <span id="qty-potato" style="font-weight:bold; margin:0 10px;">1</span> কেজি
                 <button class="small" onclick="changeQty('potato', 1)">+</button>
             </div>
-            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-potato">২৫</span> টাকা</p>
+            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-potato">25</span> টাকা</p>
             <button onclick="addToCart('potato')">Add to Cart</button>
         </div>
-
         <!-- 3. বেগুন -->
         <div class="veg-card">
             <img src="begun.jpg" style="width:100%; height:150px; object-fit:cover; border-radius:12px;">
-<h3>বেগুন</h3>
+            <h3>বেগুন</h3>
             <p>দাম: ৪০ টাকা / কেজি</p>
             <div>
                 <button class="small" onclick="changeQty('begun', -1)">-</button>
                 <span id="qty-begun" style="font-weight:bold; margin:0 10px;">1</span> কেজি
                 <button class="small" onclick="changeQty('begun', 1)">+</button>
             </div>
-            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-begun">৪০</span> টাকা</p>
+            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-begun">40</span> টাকা</p>
             <button onclick="addToCart('begun')">Add to Cart</button>
         </div>
-
         <!-- 4. ফুলকপি -->
         <div class="veg-card">
             <img src="fulkopi.jpg" style="width:100%; height:150px; object-fit:cover; border-radius:12px;">
-<h3>ফুলকপি</h3>
+            <h3>ফুলকপি</h3>
             <p>দাম: ৩৫ টাকা / পিস</p>
             <div>
                 <button class="small" onclick="changeQty('fulkopi', -1)">-</button>
                 <span id="qty-fulkopi" style="font-weight:bold; margin:0 10px;">1</span> পিস
                 <button class="small" onclick="changeQty('fulkopi', 1)">+</button>
             </div>
-            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-fulkopi">৩৫</span> টাকা</p>
+            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-fulkopi">35</span> টাকা</p>
             <button onclick="addToCart('fulkopi')">Add to Cart</button>
         </div>
-
         <!-- 5. বাঁধাকপি -->
         <div class="veg-card">
             <img src="badhakopi.jpg" style="width:100%; height:150px; object-fit:cover; border-radius:12px;">
-<h3>বাঁধাকপি</h3>
+            <h3>বাঁধাকপি</h3>
             <p>দাম: ৩০ টাকা / পিস</p>
             <div>
                 <button class="small" onclick="changeQty('badhakopi', -1)">-</button>
                 <span id="qty-badhakopi" style="font-weight:bold; margin:0 10px;">1</span> পিস
                 <button class="small" onclick="changeQty('badhakopi', 1)">+</button>
             </div>
-            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-badhakopi">৩০</span> টাকা</p>
+            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-badhakopi">30</span> টাকা</p>
             <button onclick="addToCart('badhakopi')">Add to Cart</button>
         </div>
-
         <!-- 6. পেঁয়াজ -->
         <div class="veg-card">
             <img src="peyaj.jpg" style="width:100%; height:150px; object-fit:cover; border-radius:12px;">
-<h3>পেঁয়াজ</h3>
+            <h3>পেঁয়াজ</h3>
             <p>দাম: ৪৫ টাকা / কেজি</p>
             <div>
                 <button class="small" onclick="changeQty('peyaj', -1)">-</button>
                 <span id="qty-peyaj" style="font-weight:bold; margin:0 10px;">1</span> কেজি
                 <button class="small" onclick="changeQty('peyaj', 1)">+</button>
             </div>
-            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-peyaj">৪৫</span> টাকা</p>
+            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-peyaj">45</span> টাকা</p>
             <button onclick="addToCart('peyaj')">Add to Cart</button>
         </div>
-
-                 <!-- 7. লাউ -->
+        <!-- 7. লাউ -->
         <div class="veg-card">
             <img src="lau.jpeg" style="width:100%; height:150px; object-fit:cover; border-radius:12px;">
-<h3>লাউ</h3>
+            <h3>লাউ</h3>
             <p>দাম: ২০ টাকা / পিস</p>
             <div>
                 <button class="small" onclick="changeQty('lau', -1)">-</button>
                 <span id="qty-lau" style="font-weight:bold; margin:0 10px;">1</span> পিস
                 <button class="small" onclick="changeQty('lau', 1)">+</button>
             </div>
-            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-lau">২০</span> টাকা</p>
+            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-lau">20</span> টাকা</p>
             <button onclick="addToCart('lau')">Add to Cart</button>
         </div>
-        
-           <!-- 9. palong -->
-    <div class="veg-card">
-        <img src="palong.jpeg" style="width:100%; height:150px; object-fit:cover; border-radius:12px;">
-<h3>palong</h3>
-        <p>দাম: ১৫ টাকা / আঁটি</p>
-        <div>
-            <button class="small" onclick="changeQty('palong', -1)">-</button>
-            <span id="qty-palong" style="font-weight:bold; margin:0 10px;">1</span>আঁটি 
-            <button class="small" onclick="changeQty('palong', 1)">+</button>
+        <!-- 8. palong -->
+        <div class="veg-card">
+            <img src="palong.jpeg" style="width:100%; height:150px; object-fit:cover; border-radius:12px;">
+            <h3>পালং</h3>
+            <p>দাম: ১৫ টাকা / আঁটি</p>
+            <div>
+                <button class="small" onclick="changeQty('palong', -1)">-</button>
+                <span id="qty-palong" style="font-weight:bold; margin:0 10px;">1</span> আঁটি
+                <button class="small" onclick="changeQty('palong', 1)">+</button>
+            </div>
+            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-palong">15</span> টাকা</p>
+            <button onclick="addToCart('palong')">Add to Cart</button>
         </div>
-        <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-palong">১৫</span> টাকা</p>
-        <button onclick="addToCart('palong')">Add to Cart</button>
-    </div>            
-        
-<!-- 10. ঢেঁড়স -->
-    <div class="veg-card">
-         <img src="dheros.jpeg" style="width:100%; height:150px; object-fit:cover; border-radius:12px;">
-<h3>ঢেঁড়স</h3>
-        <p>দাম: ৩০ টাকা / কেজি</p>
-        <div>
-            <button class="small" onclick="changeQty('dheros', -1)">-</button>
-            <span id="qty-dheros" style="font-weight:bold; margin:0 10px;">1</span> কেজি 
-            <button class="small" onclick="changeQty('dheros', 1)">+</button>
+        <!-- 9. ঢেঁড়স -->
+        <div class="veg-card">
+            <img src="dheros.jpeg" style="width:100%; height:150px; object-fit:cover; border-radius:12px;">
+            <h3>ঢেঁড়স</h3>
+            <p>দাম: ৩০ টাকা / কেজি</p>
+            <div>
+                <button class="small" onclick="changeQty('dheros', -1)">-</button>
+                <span id="qty-dheros" style="font-weight:bold; margin:0 10px;">1</span> কেজি
+                <button class="small" onclick="changeQty('dheros', 1)">+</button>
+            </div>
+            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-dheros">30</span> টাকা</p>
+            <button onclick="addToCart('dheros')">Add to Cart</button>
         </div>
-        <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-dheros">৩০</span> টাকা</p>
-        <button onclick="addToCart('dheros')">Add to Cart</button>
+        <!-- 10. করলা -->
+        <div class="veg-card">
+            <img src="korola.jpeg" style="width:100%; height:150px; object-fit:cover; border-radius:12px;">
+            <h3>করলা</h3>
+            <p>দাম: ৫০ টাকা / কেজি</p>
+            <div>
+                <button class="small" onclick="changeQty('korola', -1)">-</button>
+                <span id="qty-korola" style="font-weight:bold; margin:0 10px;">1</span> কেজি
+                <button class="small" onclick="changeQty('korola', 1)">+</button>
+            </div>
+            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-korola">50</span> টাকা</p>
+            <button onclick="addToCart('korola')">Add to Cart</button>
+        </div>
+        <!-- 11. পটল -->
+        <div class="veg-card">
+            <img src="potol.jpeg" style="width:100%; height:150px; object-fit:cover; border-radius:12px;">
+            <h3>পটল</h3>
+            <p>দাম: ৪০ টাকা / কেজি</p>
+            <div>
+                <button class="small" onclick="changeQty('potol', -1)">-</button>
+                <span id="qty-potol" style="font-weight:bold; margin:0 10px;">1</span> কেজি
+                <button class="small" onclick="changeQty('potol', 1)">+</button>
+            </div>
+            <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-potol">40</span> টাকা</p>
+            <button onclick="addToCart('potol')">Add to Cart</button>
+        </div>
     </div>
 
-        
-<!-- 11. করলা -->     
-<div class="veg-card">
-    <img src="korola.jpeg" style="width:100%; height:150px; object-fit:cover; border-radius:12px;">
-    <h3>করলা</h3>
-    <p>দাম: ৫০ টাকা / কেজি</p>
-    <div>
-        <button class="small" onclick="changeQty('korola', -1)">-</button>
-        <span id="qty-korola" style="font-weight:bold; margin:0 10px;">1</span> কেজি
-        <button class="small" onclick="changeQty('korola', 1)">+</button>
-    </div>
-    <p style="color:#15803d; font-weight:bold;">মোট: <span id="total-korola">৫০</span> টাকা</p>
-    <button onclick="addToCart('korola')">Add to Cart</button>
-</div> 
-
-        
-   <!-- 12. পটল -->     
-    <div class="veg-card">
-        <img src="potol.jpeg" style="width:100%; height:150px; object-fit:cover; border-radius:12px;">
-<h3>পটল</h3>
-        <p>দাম: ৪০ টাকা / কেজি</p>
-        <div>
-            <button class="small" onclick="changeQty('potol', -1)">-</button>
-            <span id="qty-potol" style="font-weight:bold; margin:0 10px;">1</span> কেজি
-            <button class="small" onclick="changeQty('potol', 1)">+</button>
-        </div><p style="color:#15803d; font-weight:bold;">মোট: <span id="total-potol">৪০</span> টাকা</p>
-        <button onclick="addToCart('potol')">Add to Cart</button>
-    </div>
-
-  <script>
-let prices = { tomato: 30, potato: 25, begun: 30, dheros: 30, korola: 40, potol: 35, badhakopi: 30, peyaj: 45, lau: 20, fulkopi: 40, palong: 20 };
+<script>
+let prices = { tomato: 30, potato: 25, begun: 40, dheros: 30, korola: 50, potol: 40, badhakopi: 30, peyaj: 45, lau: 20, fulkopi: 35, palong: 15 };
 let quantities = { tomato: 1, potato: 1, begun: 1, dheros: 1, korola: 1, potol: 1, badhakopi: 1, peyaj: 1, lau: 1, fulkopi: 1, palong: 1 };
 let names = { tomato: "টমেটো", potato: "আলু", begun: "বেগুন", dheros: "ঢেঁড়স", korola: "করলা", potol: "পটল", badhakopi: "বাঁধাকপি", peyaj: "পেঁয়াজ", lau: "লাউ", fulkopi: "ফুলকপি", palong: "পালং শাক" };
 let units = { tomato: "কেজি", potato: "কেজি", begun: "কেজি", dheros: "কেজি", korola: "কেজি", potol: "কেজি", badhakopi: "পিস", peyaj: "কেজি", lau: "পিস", fulkopi: "পিস", palong: "আঁটি" };
-
 let cart = {};
 let grandTotal = 0;
+
+function showProducts(){
+    document.getElementById('products').style.display = 'flex';
+    window.scrollTo(0, 400);
+}
 
 function changeQty(item, delta){
     quantities[item] += delta;
@@ -210,13 +203,11 @@ function changeQty(item, delta){
     document.getElementById('qty-'+item).innerText = quantities[item];
     document.getElementById('total-'+item).innerText = prices[item] * quantities[item];
 }
-
 function addToCart(item){
     if(!cart[item]) cart[item] = 0;
     cart[item] += quantities[item];
     updateCartUI();
 }
-
 function updateCartUI(){
     let cartDiv = document.getElementById('cart-items');
     let totalSpan = document.getElementById('grand-total');
@@ -232,7 +223,6 @@ function updateCartUI(){
     }
     totalSpan.innerText = grandTotal;
 }
-
 function checkout(){
     if(grandTotal === 0){ alert("Cart খালি আছে!"); return; }
     let msg = "নমস্কার, আমি অর্ডার করতে চাই:%0A";
@@ -242,6 +232,6 @@ function checkout(){
     msg += `%0Aমোট বিল: ${grandTotal} টাকা`;
     window.open(`https://wa.me/919999999999?text=${msg}`, '_blank');
 }
-</script>           
-
-    
+</script>
+</body>
+</html>
