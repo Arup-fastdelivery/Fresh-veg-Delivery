@@ -20,6 +20,13 @@
         button:hover { background: #15803d; }
         button:disabled { background: #999; cursor: not-allowed; }
     </style>
+    <script>
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js');
+}
+</script>
+</body>
+</html>
 </head>
 <body>
     <header>
