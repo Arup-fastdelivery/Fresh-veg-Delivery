@@ -7,46 +7,44 @@
 <link rel="manifest" href="manifest.json">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial}
-body{background:#e8f5e9;padding-bottom:90px}
+body{background:#e8f5e9;padding-bottom:160px}
 .header{display:flex;justify-content:space-between;align-items:center;padding:15px 16px;background:#e8f5e9}
 .logo{display:flex;gap:8px;align-items:center}
-.logo h2{color:#1b5e20;font-size:22px;line-height:1}
-.logo p{font-size:11px;color:#555}
-.icon-btn{width:42px;height:42px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.08);font-size:20px;position:relative;border:none}
+.logo h2{color:#1b5e20;font-size:20px;line-height:1}
+.logo p{font-size:10px;color:#555}
+.icon-btn{width:40px;height:40px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.08);font-size:18px;position:relative;border:none}
 .search-wrap{padding:0 16px;display:flex;gap:10px;margin-bottom:14px}
 .search-box{flex:1;background:white;border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
 .search-box input{border:none;outline:none;width:100%;font-size:14px}
-.filter{width:46px;background:white;border-radius:14px;border:none;box-shadow:0 2px 8px rgba(0,0,0,0.05);font-size:20px}
-.banner{margin:0 16px;background:linear-gradient(90deg,#dcedc8 0%, #aed581 100%);border-radius:18px;padding:18px;display:flex;align-items:center;justify-content:space-between;overflow:hidden;position:relative}
-.banner h1{font-size:26px;color:#2e7d32;line-height:0.95;font-style:italic}
-.banner p{font-size:10px;margin:8px 0;color:#333}
-.banner button{background:#2e7d32;color:white;border:none;padding:7px 14px;border-radius:20px;font-size:12px}
-.banner img{width:58%;border-radius:12px;object-fit:cover}
+.filter{width:46px;background:white;border-radius:14px;border:none;box-shadow:0 2px 8px rgba(0,0,0,0.05);font-size:18px}
+.banner{margin:0 16px;background:linear-gradient(90deg,#dcedc8 0%, #aed581 100%);border-radius:18px;padding:18px;display:flex;align-items:center;justify-content:space-between}
+.banner h1{font-size:24px;color:#2e7d32;line-height:1;font-style:italic}
+.banner p{font-size:10px;margin:8px 0;color:#333;line-height:1.3}
+.banner button{background:#2e7d32;color:white;border:none;padding:8px 14px;border-radius:20px;font-size:12px;margin-top:5px}
 .cats{display:flex;gap:10px;padding:14px 16px;overflow:auto}
 .cat{white-space:nowrap;padding:10px 16px;border-radius:25px;border:none;background:white;color:#555;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;box-shadow:0 2px 6px rgba(0,0,0,0.05)}
 .cat.active{background:#2e7d32;color:white}
 .products{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:0 12px}
-.card{background:white;border-radius:18px;padding:12px;position:relative;box-shadow:0 4px 12px rgba(0,0,0,0.05)}
+.card{background:white;border-radius:18px;padding:12px;position:relative;box-shadow:0 4px 12px rgba(0,0,0,0.05);text-align:left}
 .card img{width:100%;height:90px;object-fit:contain;background:#f9f9f9;border-radius:12px}
-.card h3{font-size:14px;margin-top:8px}
+.card h3{font-size:14px;margin-top:8px;color:#222}
 .card.sub{font-size:11px;color:#777}
 .price{color:#2e7d32;font-weight:800;font-size:15px;margin:4px 0}
 .price span{font-weight:400;font-size:11px;color:#555}
-.qty{display:flex;align-items:center;justify-content:center;gap:10px;margin:6px 0}
+.qty{display:flex;align-items:center;justify-content:center;gap:10px;margin:8px 0}
 .qty button{width:24px;height:24px;border-radius:50%;border:none;background:#c8e6c9;color:#2e7d32;font-weight:bold;cursor:pointer}
-.add{width:100%;background:#2e7d32;color:white;border:none;padding:8px;border-radius:20px;font-size:12px;font-weight:600;margin-top:6px}
-.total{font-size:11px;text-align:center;color:#555;font-weight:600}
-.basket{position:fixed;bottom:75px;left:12px;right:12px;background:#e8f5e9;border:1px solid #c8e6c9;border-radius:16px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 8px 20px rgba(0,0,0,0.15);z-index:10}
-.bottom{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:10px 0;border-top:1px solid #eee;z-index:11}
+.add{width:100%;background:#2e7d32;color:white;border:none;padding:9px;border-radius:20px;font-size:12px;font-weight:600;margin-top:6px}
+.total{font-size:11px;text-align:center;color:#555;font-weight:600;margin-top:4px}
+.basket{position:fixed;bottom:75px;left:12px;right:12px;background:#2e7d32;border-radius:16px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 8px 20px rgba(0,0,0,0.2);z-index:10;color:white}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:12px 0 8px 0;border-top:1px solid #eee;z-index:11}
 .bottom div{text-align:center;font-size:11px;color:#888}
 .bottom.active{color:#2e7d32;font-weight:700}
-#cart-items{display:none}
 </style>
 </head>
 <body>
 
 <div class="header">
-<div class="logo"><div style="font-size:30px">🌿</div><div><h2>FreshCart</h2><p>Fresh Vegetables Delivered to Your Doorstep</p></div></div>
+<div class="logo"><div style="font-size:28px">🌿</div><div><h2>FreshCart</h2><p>Fresh Vegetables Delivered to Your Doorstep</p></div></div>
 <div style="display:flex;gap:8px"><button class="icon-btn">🔔<span style="position:absolute;top:5px;right:7px;width:8px;height:8px;background:red;border-radius:50%"></span></button><button class="icon-btn" style="background:#2e7d32;color:white">👤</button></div>
 </div>
 
@@ -57,7 +55,7 @@ body{background:#e8f5e9;padding-bottom:90px}
 
 <div class="banner">
 <div><h1>Fresh<br>Healthy<br>Natural</h1><p>100% Fresh Vegetables<br>Direct from Farmers</p><button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now →</button></div>
-<img src="https://images.unsplash.com/photo-1610831098506-e144b93072bc?w=400">
+<div style="font-size:70px;line-height:1">🧺</div>
 </div>
 
 <div style="text-align:center;margin:12px"><span style="width:20px;height:6px;background:#2e7d32;display:inline-block;border-radius:10px"></span> <span style="width:6px;height:6px;background:#ccc;display:inline-block;border-radius:50%"></span></div>
@@ -83,7 +81,7 @@ body{background:#e8f5e9;padding-bottom:90px}
 <div id="cart" style="margin:16px;background:white;padding:16px;border-radius:16px;display:none">
 <h3>🛒 My Basket</h3>
 <div id="cart-items"></div>
-<p style="font-size:12px;background:#fff8e1;padding:6px;border-radius:8px;margin:10px 0">Min Order: ₹199 | ₹500+ Free Delivery</p>
+<p style="font-size:12px;background:#fff8e1;padding:8px;border-radius:8px;margin:10px 0">Min Order: ₹199 | ₹500+ Free Delivery</p>
 <p>Subtotal: ₹<span id="grand-total">0</span> | Delivery: ₹<span id="delivery-charge">0</span> | <b>Payable: ₹<span id="payable-total">0</span></b></p>
 <input id="cust-name" placeholder="Your Name" style="width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:8px">
 <input id="cust-phone" placeholder="Phone Number" style="width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:8px">
@@ -92,8 +90,8 @@ body{background:#e8f5e9;padding-bottom:90px}
 </div>
 
 <div class="basket" id="basketBar" style="display:none">
-<div style="display:flex;align-items:center;gap:10px"><div style="position:relative">🧺<span id="basketCount" style="position:absolute;top:-8px;right:-8px;background:red;color:white;font-size:10px;padding:2px 5px;border-radius:50%">0</span></div><div><div style="font-size:12px">Your Basket</div><div style="font-weight:800">Rs. <span id="basketTotal">0.00</span></div></div></div>
-<button onclick="document.getElementById('cart').style.display='block';document.getElementById('cart').scrollIntoView({behavior:'smooth'})" style="background:#2e7d32;color:white;border:none;padding:10px 18px;border-radius:20px;font-size:13px">View Cart →</button>
+<div style="display:flex;align-items:center;gap:10px"><div style="position:relative;font-size:22px">🧺<span id="basketCount" style="position:absolute;top:-8px;right:-8px;background:red;color:white;font-size:10px;padding:2px 5px;border-radius:50%">0</span></div><div><div style="font-size:12px;opacity:0.9">Your Basket</div><div style="font-weight:800;font-size:16px">Rs. <span id="basketTotal">0.00</span></div></div></div>
+<button onclick="document.getElementById('cart').style.display='block';document.getElementById('cart').scrollIntoView({behavior:'smooth'})" style="background:white;color:#2e7d32;border:none;padding:10px 18px;border-radius:20px;font-size:13px;font-weight:700">View Cart →</button>
 </div>
 
 <div class="bottom">
