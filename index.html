@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,10 +7,10 @@
     <style>
         body { margin: 0; font-family: Arial, sans-serif; background: #f4fff4; color: #222; }
         header { background: #16a34a; color: white; padding: 25px 20px; text-align: center; }
-      .container { padding: 20px; text-align: center; }
-      .welcome { font-size: 24px; font-weight: bold; color: #15803d; margin-bottom: 10px; }
-      .products { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
-      .veg-card { background: white; padding: 20px; border-radius: 12px; width: 260px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }
+     .container { padding: 20px; text-align: center; }
+     .welcome { font-size: 24px; font-weight: bold; color: #15803d; margin-bottom: 10px; }
+     .products { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
+     .veg-card { background: white; padding: 20px; border-radius: 12px; width: 260px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }
         button { background: #16a34a; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 15px; margin-top: 10px; }
         button.small { padding: 5px 12px; font-size: 16px; }
         button:hover { background: #15803d; }
@@ -28,19 +28,20 @@
         <button onclick="showProducts()">Start Shopping</button>
     </div>
 
-<!-- SEARCH BAR - NEW -->
 <div style="text-align:center; margin:10px 20px;">
   <input id="searchBox" type="text" placeholder="🔍 সবজি খুঁজুন... যেমন: আলু, টমেটো" onkeyup="searchVeg()" style="width:90%; max-width:450px; padding:12px 15px; border-radius:25px; border:2px solid #16a34a; outline:none; font-size:16px;">
 </div>
 
 <div id="cart" style="background:white; padding:20px; margin:20px; border-radius:12px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
     <h2>🛒 My Cart</h2>
-    <div id="cart-items" style="margin:15px 0;">
-        <p>Cart খালি আছে। সবজি Add করুন।</p>
+    <div id="cart-items" style="margin:15px 0;"><p>Cart খালি আছে। সবজি Add করুন।</p></div>
+    <p style="color:#666; font-size:14px; background:#fff3cd; padding:6px; border-radius:5px;">ℹ️ Minimum Order: 199 টাকা | 500 টাকার উপরে ফ্রি ডেলিভারি</p>
+    <div id="bill-details" style="text-align:left; background:#f9fff9; padding:10px; border-radius:8px; margin-top:10px;">
+        <p style="margin:5px 0;">সবজির দাম: <span id="grand-total">0</span> টাকা</p>
+        <p style="margin:5px 0;">ডেলিভারি চার্জ: <span id="delivery-charge">0</span> টাকা</p>
+        <h3 style="color:#15803d; margin:5px 0; border-top:1px dashed #ccc; padding-top:5px;">মোট দিতে হবে: <span id="payable-total">0</span> টাকা</h3>
     </div>
-    <p style="color:#666; font-size:14px; background:#fff3cd; padding:6px; border-radius:5px;">ℹ️ Minimum Order: 199 টাকা</p>
-    <h3 style="color:#15803d;">মোট বিল: <span id="grand-total">0</span> টাকা</h3>
-        <div style="text-align:left; margin-top:15px; background:#f0fdf4; padding:12px; border-radius:8px;">
+    <div style="text-align:left; margin-top:15px; background:#f0fdf4; padding:12px; border-radius:8px;">
         <p style="margin:0 0 8px 0; font-weight:bold;">📝 আপনার Details</p>
         <input id="cust-name" type="text" placeholder="আপনার নাম" style="width:95%; padding:10px; margin:5px 0; border-radius:6px; border:1px solid #ccc;">
         <input id="cust-phone" type="text" placeholder="ফোন নম্বর" style="width:95%; padding:10px; margin:5px 0; border-radius:6px; border:1px solid #ccc;">
@@ -68,73 +69,53 @@ let prices = { tomato: 30, potato: 25, begun: 40, dheros: 30, korola: 50, potol:
 let quantities = { tomato: 1, potato: 1, begun: 1, dheros: 1, korola: 1, potol: 1, badhakopi: 1, peyaj: 1, lau: 1, fulkopi: 1, palong: 1 };
 let names = { tomato: "টমেটো", potato: "আলু", begun: "বেগুন", dheros: "ঢেঁড়স", korola: "করলা", potol: "পটল", badhakopi: "বাঁধাকপি", peyaj: "পেঁয়াজ", lau: "লাউ", fulkopi: "ফুলকপি", palong: "পালং শাক" };
 let units = { tomato: "কেজি", potato: "কেজি", begun: "কেজি", dheros: "কেজি", korola: "কেজি", potol: "কেজি", badhakopi: "পিস", peyaj: "কেজি", lau: "পিস", fulkopi: "পিস", palong: "আঁটি" };
-let cart = {};
-let grandTotal = 0;
-
+let cart = {}; let grandTotal = 0;
 function showProducts(){ document.getElementById('products').style.display = 'flex'; window.scrollTo(0, 400); }
-
 function searchVeg(){
   let input = document.getElementById('searchBox').value.toLowerCase();
   let cards = document.getElementsByClassName('veg-card');
   for(let i=0; i<cards.length; i++){
     let name = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
-    if(name.includes(input)){ cards[i].style.display = ""; }
-    else { cards[i].style.display = "none"; }
+    cards[i].style.display = name.includes(input)? "" : "none";
   }
 }
-
 function changeQty(item, delta){
-    quantities[item] += delta;
-    if(quantities[item] < 1) quantities[item] = 1;
+    quantities[item] += delta; if(quantities[item] < 1) quantities[item] = 1;
     document.getElementById('qty-'+item).innerText = quantities[item];
     document.getElementById('total-'+item).innerText = prices[item] * quantities[item];
 }
-function addToCart(item){
-    if(!cart[item]) cart[item] = 0;
-    cart[item] += quantities[item];
-    updateCartUI();
-}
-function updateCartQty(item, delta){
-    cart[item] += delta;
-    if(cart[item] <= 0){ delete cart[item]; }
-    updateCartUI();
-}
+function addToCart(item){ if(!cart[item]) cart[item] = 0; cart[item] += quantities[item]; updateCartUI(); }
+function updateCartQty(item, delta){ cart[item] += delta; if(cart[item] <= 0){ delete cart[item]; } updateCartUI(); }
 function updateCartUI(){
     let cartDiv = document.getElementById('cart-items');
-    let totalSpan = document.getElementById('grand-total');
     cartDiv.innerHTML = ""; grandTotal = 0;
-    for(let key in cart){
-        let price = prices[key] * cart[key];
-        grandTotal += price;
+    for(let key in cart){ let price = prices[key] * cart[key]; grandTotal += price;
         cartDiv.innerHTML += `<div style="display:flex; justify-content:space-between; align-items:center; background:#f9fff9; padding:8px; margin:5px 0; border-radius:6px;"><span>${names[key]} - ${cart[key]} ${units[key]}</span><span><button class="small" onclick="updateCartQty('${key}', -1)">-</button><span style="margin:0 5px;">${cart[key]}</span><button class="small" onclick="updateCartQty('${key}', 1)">+</button><span style="margin-left:10px; color:#15803d; font-weight:bold;">${price} টাকা</span></span></div>`;
     }
     if(Object.keys(cart).length === 0){ cartDiv.innerHTML = "<p>Cart খালি আছে। সবজি Add করুন।</p>"; }
-    totalSpan.innerText = grandTotal;
+    let deliveryCharge = (grandTotal > 0 && grandTotal < 500)? 30 : 0;
+    let payableTotal = grandTotal + deliveryCharge;
+    document.getElementById('grand-total').innerText = grandTotal;
+    document.getElementById('delivery-charge').innerText = deliveryCharge;
+    document.getElementById('payable-total').innerText = payableTotal;
 }
 function checkout(){
     if(grandTotal === 0){ alert("Cart খালি আছে!"); return; }
     if(grandTotal < 199){
         alert("⚠️ Minimum Order 199 টাকা!\nআপনার বিল এখন " + grandTotal + " টাকা।\nআর " + (199 - grandTotal) + " টাকার সবজি Add করুন।");
-        document.getElementById('cart').scrollIntoView();
-        let cartDiv = document.getElementById('cart-items');
-        cartDiv.innerHTML += `<p style="color:red; font-weight:bold; background:#ffe0e0; padding:8px; border-radius:5px; margin-top:10px;">⚠️ Please 199 টাকার বেশি অর্ডার করুন! আর ${199 - grandTotal} টাকা বাকি।</p>`;
         return;
     }
+    let deliveryCharge = (grandTotal < 500)? 30 : 0;
+    let payableTotal = grandTotal + deliveryCharge;
     let name = document.getElementById('cust-name').value.trim();
     let phone = document.getElementById('cust-phone').value.trim();
     let address = document.getElementById('cust-address').value.trim();
     if(name=="" || phone=="" || address==""){ alert("অনুগ্রহ করে নাম, ফোন ও ঠিকানা লিখুন!"); return; }
     let msg = `নমস্কার FreshCart,%0A%0A*কাস্টমার Details:*%0Aনাম: ${name}%0Aফোন: ${phone}%0Aঠিকানা: ${address}%0A%0A*অর্ডার:*%0A`;
     for(let key in cart){ msg += `${names[key]} - ${cart[key]} ${units[key]} = ${prices[key]*cart[key]} টাকা%0A`; }
-    msg += `%0A*মোট বিল: ${grandTotal} টাকা*`;
+    msg += `%0Aসবজির দাম: ${grandTotal} টাকা%0Aডেলিভারি চার্জ: ${deliveryCharge} টাকা%0A*মোট দিতে হবে: ${payableTotal} টাকা*`;
     window.open(`https://wa.me/917584036364?text=${msg}`, '_blank');
-    setTimeout(() => {
-        cart = {}; grandTotal = 0; updateCartUI();
-        document.getElementById('cust-name').value = "";
-        document.getElementById('cust-phone').value = "";
-        document.getElementById('cust-address').value = "";
-        alert("অর্ডার WhatsApp এ পাঠানো হয়েছে! কার্ট খালি করা হলো।");
-    }, 1000);
+    setTimeout(() => { cart = {}; grandTotal = 0; updateCartUI(); document.getElementById('cust-name').value = ""; document.getElementById('cust-phone').value = ""; document.getElementById('cust-address').value = ""; alert("অর্ডার WhatsApp এ পাঠানো হয়েছে!"); }, 1000);
 }
 </script>
 </body>
