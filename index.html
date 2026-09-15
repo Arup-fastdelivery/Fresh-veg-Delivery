@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,10 +7,10 @@
     <style>
         body { margin: 0; font-family: Arial, sans-serif; background: #f4fff4; color: #222; }
         header { background: #16a34a; color: white; padding: 25px 20px; text-align: center; }
-       .container { padding: 20px; text-align: center; }
-       .welcome { font-size: 24px; font-weight: bold; color: #15803d; margin-bottom: 10px; }
-       .products { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
-       .veg-card { background: white; padding: 20px; border-radius: 12px; width: 260px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }
+      .container { padding: 20px; text-align: center; }
+      .welcome { font-size: 24px; font-weight: bold; color: #15803d; margin-bottom: 10px; }
+      .products { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
+      .veg-card { background: white; padding: 20px; border-radius: 12px; width: 260px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }
         button { background: #16a34a; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 15px; margin-top: 10px; }
         button.small { padding: 5px 12px; font-size: 16px; }
         button:hover { background: #15803d; }
@@ -27,6 +27,11 @@
         <p>Order fresh and quality vegetables from your home.</p>
         <button onclick="showProducts()">Start Shopping</button>
     </div>
+
+<!-- SEARCH BAR - NEW -->
+<div style="text-align:center; margin:10px 20px;">
+  <input id="searchBox" type="text" placeholder="🔍 সবজি খুঁজুন... যেমন: আলু, টমেটো" onkeyup="searchVeg()" style="width:90%; max-width:450px; padding:12px 15px; border-radius:25px; border:2px solid #16a34a; outline:none; font-size:16px;">
+</div>
 
 <div id="cart" style="background:white; padding:20px; margin:20px; border-radius:12px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
     <h2>🛒 My Cart</h2>
@@ -66,10 +71,18 @@ let units = { tomato: "কেজি", potato: "কেজি", begun: "কেজ�
 let cart = {};
 let grandTotal = 0;
 
-function showProducts(){
-    document.getElementById('products').style.display = 'flex';
-    window.scrollTo(0, 400);
+function showProducts(){ document.getElementById('products').style.display = 'flex'; window.scrollTo(0, 400); }
+
+function searchVeg(){
+  let input = document.getElementById('searchBox').value.toLowerCase();
+  let cards = document.getElementsByClassName('veg-card');
+  for(let i=0; i<cards.length; i++){
+    let name = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+    if(name.includes(input)){ cards[i].style.display = ""; }
+    else { cards[i].style.display = "none"; }
+  }
 }
+
 function changeQty(item, delta){
     quantities[item] += delta;
     if(quantities[item] < 1) quantities[item] = 1;
@@ -89,8 +102,7 @@ function updateCartQty(item, delta){
 function updateCartUI(){
     let cartDiv = document.getElementById('cart-items');
     let totalSpan = document.getElementById('grand-total');
-    cartDiv.innerHTML = "";
-    grandTotal = 0;
+    cartDiv.innerHTML = ""; grandTotal = 0;
     for(let key in cart){
         let price = prices[key] * cart[key];
         grandTotal += price;
