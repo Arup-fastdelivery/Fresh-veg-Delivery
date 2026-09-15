@@ -251,6 +251,17 @@ function updateCartUI(){
 
 function checkout(){
     if(grandTotal === 0){ alert("Cart খালি আছে!"); return; }
+    
+    // নতুন নিয়ম: 199 টাকার নিচে অর্ডার হবে না
+    if(grandTotal < 199){
+        alert("⚠️ Minimum Order 199 টাকা!\n\nআপনার বিল এখন " + grandTotal + " টাকা।\nআর " + (199 - grandTotal) + " টাকার সবজি Add করুন।");
+        document.getElementById('cart').scrollIntoView();
+        // লাল মেসেজ দেখানো
+        let cartDiv = document.getElementById('cart-items');
+        cartDiv.innerHTML += `<p style="color:red; font-weight:bold; background:#ffe0e0; padding:8px; border-radius:5px; margin-top:10px;">⚠️ Please 199 টাকার বেশি অর্ডার করুন! আর ${199 - grandTotal} টাকা বাকি।</p>`;
+        return;
+    }
+
     let name = document.getElementById('cust-name').value.trim();
     let phone = document.getElementById('cust-phone').value.trim();
     let address = document.getElementById('cust-address').value.trim();
@@ -262,7 +273,6 @@ function checkout(){
     msg += `%0A*মোট বিল: ${grandTotal} টাকা*`;
     window.open(`https://wa.me/917584036364?text=${msg}`, '_blank');
 
-    // FIX 2: অর্ডারের পর কার্ট খালি হয়ে যাবে
     setTimeout(() => {
         cart = {};
         grandTotal = 0;
@@ -272,6 +282,7 @@ function checkout(){
         document.getElementById('cust-address').value = "";
         alert("অর্ডার WhatsApp এ পাঠানো হয়েছে! কার্ট খালি করা হলো।");
     }, 1000);
+}
 }
 </script>
 </body>
