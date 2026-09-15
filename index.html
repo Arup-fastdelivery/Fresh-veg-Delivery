@@ -28,14 +28,21 @@
         <button onclick="showProducts()">Start Shopping</button>
     </div>
 
-<!-- My Cart Section -->
+<!-- My Cart Section --> 
 <div id="cart" style="background:white; padding:20px; margin:20px; border-radius:12px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
     <h2>🛒 My Cart</h2>
     <div id="cart-items" style="margin:15px 0;">
         <p>Cart খালি আছে। সবজি Add করুন।</p>
     </div>
     <h3 style="color:#15803d;">মোট বিল: <span id="grand-total">0</span> টাকা</h3>
-    <button onclick="checkout()" style="background:#22c55e; color:white; padding:10px 20px; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">Checkout via WhatsApp</button>
+        <div style="text-align:left; margin-top:15px; background:#f0fdf4; padding:12px; border-radius:8px;">
+        <p style="margin:0 0 8px 0; font-weight:bold;">📝 আপনার Details</p>
+        <input id="cust-name" type="text" placeholder="আপনার নাম" style="width:95%; padding:10px; margin:5px 0; border-radius:6px; border:1px solid #ccc;">
+        <input id="cust-phone" type="text" placeholder="ফোন নম্বর" style="width:95%; padding:10px; margin:5px 0; border-radius:6px; border:1px solid #ccc;">
+        <textarea id="cust-address" placeholder="পুরো ঠিকানা" style="width:95%; padding:10px; margin:5px 0; border-radius:6px; border:1px solid #ccc;"></textarea>
+    </div>
+
+    <button onclick="checkout()" style="background:#22c55e; color:white; padding:12px 20px; border:none; border-radius:8px; font-weight:bold; cursor:pointer; width:100%; margin-top:12px;">Checkout via WhatsApp</button>
 </div>
 
     <div id="products" class="products">
@@ -225,13 +232,14 @@ function updateCartUI(){
 }
 function checkout(){
     if(grandTotal === 0){ alert("Cart খালি আছে!"); return; }
-    let msg = "নমস্কার, আমি অর্ডার করতে চাই:%0A";
+    let name = document.getElementById('cust-name').value.trim();
+    let phone = document.getElementById('cust-phone').value.trim();
+    let address = document.getElementById('cust-address').value.trim();
+    if(name=="" || phone=="" || address==""){ alert("অনুগ্রহ করে নাম, ফোন ও ঠিকানা লিখুন!"); return; }
+    let msg = `নমস্কার FreshCart,%0A%0A*কাস্টমার Details:*%0Aনাম: ${name}%0Aফোন: ${phone}%0Aঠিকানা: ${address}%0A%0A*অর্ডার:*%0A`;
     for(let key in cart){
         msg += `${names[key]} - ${cart[key]} ${units[key]} = ${prices[key]*cart[key]} টাকা%0A`;
     }
-    msg += `%0Aমোট বিল: ${grandTotal} টাকা`;
-    window.open(`https://wa.me/919999999999?text=${msg}`, '_blank');
+    msg += `%0A*মোট বিল: ${grandTotal} টাকা*`;
+    window.open(`https://wa.me/917584036364?text=${msg}`, '_blank');
 }
-</script>
-</body>
-</html>
