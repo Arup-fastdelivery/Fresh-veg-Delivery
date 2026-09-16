@@ -1,60 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fresh Veg Delivery</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FreshCart - Fresh Vegetables</title>
+<link rel="manifest" href="manifest.json">
 <style>
-body{margin:0;font-family:Arial;background:#f2f2f2;padding-bottom:80px}
-.header{background:#4caf50;color:white;padding:12px;text-align:center;font-size:20px;font-weight:bold}
-.search{padding:10px;background:white}.search input{width:95%;padding:10px;border-radius:20px;border:1px solid #ccc}
-.card{background:white;margin:10px;border-radius:15px;padding:10px;display:flex;gap:10px;box-shadow:0 2px 5px rgba(0,0,0,0.1)}
-.card img{width:80px;height:80px;border-radius:10px;object-fit:cover}
-.qty{display:flex;align-items:center;gap:8px;margin:5px 0}.qty button{width:28px;height:28px;border-radius:50%;border:1px solid #4caf50;background:white}
-.add{background:#4caf50;color:white;border:none;padding:6px 12px;border-radius:15px;cursor:pointer}
-.bottom{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:10px 0;box-shadow:0 -2px 10px rgba(0,0,0,0.1);z-index:999}
-.bottom div{text-align:center;font-size:13px}.active{color:#4caf50;font-weight:bold}
-#basketBar{position:fixed;bottom:60px;left:0;right:0;background:#2e7d32;color:white;padding:12px;display:none;justify-content:space-between;align-items:center;z-index:1000}
-#cart-items{max-height:300px;overflow:auto}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial}
+body{background:#e8f5e9;padding-bottom:160px}
+.header{display:flex;justify-content:space-between;align-items:center;padding:15px 16px;background:#e8f5e9}
+.logo{display:flex;gap:8px;align-items:center}
+.logo h2{color:#1b5e20;font-size:20px;line-height:1}
+.logo p{font-size:10px;color:#555}
+.icon-btn{width:40px;height:40px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.08);font-size:18px;position:relative;border:none}
+.search-wrap{padding:0 16px;display:flex;gap:10px;margin-bottom:14px}
+.search-box{flex:1;background:white;border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+.search-box input{border:none;outline:none;width:100%;font-size:14px}
+.filter{width:46px;background:white;border-radius:14px;border:none;box-shadow:0 2px 8px rgba(0,0,0,0.05);font-size:18px}
+.banner{margin:0 16px;background:linear-gradient(90deg,#c5e1a5 0%, #81c784 100%);border-radius:18px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;overflow:hidden}
+.banner h1{font-size:24px;color:#2e7d32;line-height:1;font-style:italic}
+.banner p{font-size:10px;margin:8px 0;color:#333;line-height:1.3}
+.banner button{background:#2e7d32;color:white;border:none;padding:8px 14px;border-radius:20px;font-size:12px;margin-top:5px}
+.cats{display:flex;gap:10px;padding:14px 16px;overflow:auto}
+.cat{white-space:nowrap;padding:10px 16px;border-radius:25px;border:none;background:white;color:#555;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;box-shadow:0 2px 6px rgba(0,0,0,0.05)}
+.cat.active{background:#2e7d32;color:white}
+.products{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:0 12px}
+.card{background:white;border-radius:18px;padding:12px;position:relative;box-shadow:0 4px 12px rgba(0,0,0,0.05);text-align:left}
+.card img{width:100%;height:90px;object-fit:contain;background:#f9f9f9;border-radius:12px}
+.card h3{font-size:14px;margin-top:8px;color:#222}
+.card.sub{font-size:11px;color:#777}
+.price{color:#2e7d32;font-weight:800;font-size:15px;margin:4px 0}
+.price span{font-weight:400;font-size:11px;color:#555}
+.qty{display:flex;align-items:center;justify-content:center;gap:10px;margin:8px 0}
+.qty button{width:24px;height:24px;border-radius:50%;border:none;background:#c8e6c9;color:#2e7d32;font-weight:bold;cursor:pointer}
+.add{width:100%;background:#2e7d32;color:white;border:none;padding:9px;border-radius:20px;font-size:12px;font-weight:600;margin-top:6px}
+.total{font-size:11px;text-align:center;color:#555;font-weight:600;margin-top:4px}
+.basket{position:fixed;bottom:75px;left:12px;right:12px;background:#2e7d32;border-radius:16px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 8px 20px rgba(0,0,0,0.2);z-index:10;color:white}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:12px 0 8px 0;border-top:1px solid #eee;z-index:11}
+.bottom div{text-align:center;font-size:11px;color:#888;cursor:pointer}
+.bottom div.active{color:#2e7d32;font-weight:700}
+.page-section{display:none;margin:12px;background:white;padding:18px;border-radius:16px;min-height:60vh}
 </style>
 </head>
 <body>
 
-<div class="header">🥬 Fresh Veg Delivery</div>
-<div class="search"><input id="searchBox" onkeyup="searchVeg()" placeholder="Search vegetables..."></div>
-
-<div id="veg-list">
-<div class="card"><img src="tomato.jpg"><div><b>Tomato - ₹30/kg</b><div class="qty"><button onclick="changeQty('tomato',-1)">-</button><span id="qty-tomato">1 kg</span><button onclick="changeQty('tomato',1)">+</button></div><div>Total: ₹<span id="total-tomato">30</span> <button class="add" onclick="addToCart('tomato')">Add to Cart</button></div></div></div>
-<div class="card"><img src="potato.jpg"><div><b>Potato - ₹25/kg</b><div class="qty"><button onclick="changeQty('potato',-1)">-</button><span id="qty-potato">1 kg</span><button onclick="changeQty('potato',1)">+</button></div><div>Total: ₹<span id="total-potato">25</span> <button class="add" onclick="addToCart('potato')">Add to Cart</button></div></div></div>
-<div class="card"><img src="begun.jpg"><div><b>Brinjal - ₹40/kg</b><div class="qty"><button onclick="changeQty('begun',-1)">-</button><span id="qty-begun">1 kg</span><button onclick="changeQty('begun',1)">+</button></div><div>Total: ₹<span id="total-begun">40</span> <button class="add" onclick="addToCart('begun')">Add to Cart</button></div></div></div>
-<div class="card"><img src="fulkopi.jpg"><div><b>Cauliflower - ₹35/pcs</b><div class="qty"><button onclick="changeQty('fulkopi',-1)">-</button><span id="qty-fulkopi">1 pcs</span><button onclick="changeQty('fulkopi',1)">+</button></div><div>Total: ₹<span id="total-fulkopi">35</span> <button class="add" onclick="addToCart('fulkopi')">Add to Cart</button></div></div></div>
-<div class="card"><img src="badhakopi.jpg"><div><b>Cabbage - ₹30/pcs</b><div class="qty"><button onclick="changeQty('badhakopi',-1)">-</button><span id="qty-badhakopi">1 pcs</span><button onclick="changeQty('badhakopi',1)">+</button></div><div>Total: ₹<span id="total-badhakopi">30</span> <button class="add" onclick="addToCart('badhakopi')">Add to Cart</button></div></div></div>
-<div class="card"><img src="peyaj.jpg"><div><b>Onion - ₹45/kg</b><div class="qty"><button onclick="changeQty('peyaj',-1)">-</button><span id="qty-peyaj">1 kg</span><button onclick="changeQty('peyaj',1)">+</button></div><div>Total: ₹<span id="total-peyaj">45</span> <button class="add" onclick="addToCart('peyaj')">Add to Cart</button></div></div></div>
-<div class="card"><img src="lau.jpeg"><div><b>Bottle Gourd - ₹20/pcs</b><div class="qty"><button onclick="changeQty('lau',-1)">-</button><span id="qty-lau">1 pcs</span><button onclick="changeQty('lau',1)">+</button></div><div>Total: ₹<span id="total-lau">20</span> <button class="add" onclick="addToCart('lau')">Add to Cart</button></div></div></div>
-<div class="card"><img src="palong.jpg"><div><b>Spinach - ₹15/bunch</b><div class="qty"><button onclick="changeQty('palong',-1)">-</button><span id="qty-palong">1 bunch</span><button onclick="changeQty('palong',1)">+</button></div><div>Total: ₹<span id="total-palong">15</span> <button class="add" onclick="addToCart('palong')">Add to Cart</button></div></div></div>
+<div class="header">
+<div class="logo"><div style="font-size:28px">🌿</div><div><h2>FreshCart</h2><p>Fresh Vegetables Delivered to Your Doorstep</p></div></div>
+<div style="display:flex;gap:8px"><button class="icon-btn">🔔<span style="position:absolute;top:5px;right:7px;width:8px;height:8px;background:red;border-radius:50%"></span></button><button class="icon-btn" style="background:#2e7d32;color:white">👤</button></div>
 </div>
 
-<div style="background:white;margin:10px;padding:15px;border-radius:15px">
-<h3>Checkout</h3>
-<input id="cust-name" placeholder="Your Name" style="width:95%;padding:10px;margin:5px 0">
-<input id="cust-phone" placeholder="Phone" style="width:95%;padding:10px;margin:5px 0">
-<input id="cust-address" placeholder="Address" style="width:95%;padding:10px;margin:5px 0">
-<div id="cart-items"></div>
-<p>Subtotal: ₹<span id="grand-total">0</span><br>Delivery: ₹<span id="delivery-charge">0</span><br><b>Payable: ₹<span id="payable-total">0</span></b></p>
-<button onclick="checkout()" style="width:100%;background:#4caf50;color:white;padding:12px;border:none;border-radius:10px;font-size:16px">Order on WhatsApp</button>
+<div class="search-wrap">
+<div class="search-box">🔍<input id="searchBox" onkeyup="searchVeg()" placeholder="Search vegetables or fruits..."></div>
+<button class="filter">⚙️</button>
 </div>
 
-<div id="my-orders-section" style="display:none; padding:20px; background:white; min-height:70vh; margin:10px; border-radius:15px;">
+<div id="home-content">
+<div class="banner">
+<div><h1>Fresh<br>Healthy<br>Natural</h1><p>100% Fresh Vegetables<br>Direct from Farmers</p><button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now →</button></div>
+<img src="banner.jpeg" style="width:115px; height:115px; object-fit:cover; border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.15);" onerror="this.src='https://via.placeholder.com/115'">
+</div>
+<div style="text-align:center;margin:12px"><span style="width:20px;height:6px;background:#2e7d32;display:inline-block;border-radius:10px"></span> <span style="width:6px;height:6px;background:#ccc;display:inline-block;border-radius:50%"></span></div>
+<div class="cats">
+<button class="cat active">🌿 All</button>
+<button class="cat">🥕 Vegetables</button>
+<button class="cat">🍎 Fruits</button>
+<button class="cat">🌿 Herbs</button>
+</div>
+<div id="products" class="products">
+<div class="card" id="card-tomato"><img src="tomato.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Tomato</h3><p class="sub">Vegetables</p><div class="price">₹30<span>/kg</span></div><div class="qty"><button onclick="changeQty('tomato',-1)">−</button><span id="qty-tomato" style="font-size:13px">1 kg</span><button onclick="changeQty('tomato',1)">+</button></div><div class="total">Total: ₹<span id="total-tomato">30</span></div><button class="add" onclick="addToCart('tomato')">🛒 Add to Cart</button></div>
+<div class="card" id="card-potato"><img src="potato.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Potato</h3><p class="sub">Vegetables</p><div class="price">₹25<span>/kg</span></div><div class="qty"><button onclick="changeQty('potato',-1)">−</button><span id="qty-potato" style="font-size:13px">1 kg</span><button onclick="changeQty('potato',1)">+</button></div><div class="total">Total: ₹<span id="total-potato">25</span></div><button class="add" onclick="addToCart('potato')">🛒 Add to Cart</button></div>
+<div class="card" id="card-begun"><img src="begun.jpg"><h3>Brinjal</h3><p class="sub">Vegetables</p><div class="price">₹40<span>/kg</span></div><div class="qty"><button onclick="changeQty('begun',-1)">−</button><span id="qty-begun" style="font-size:13px">1 kg</span><button onclick="changeQty('begun',1)">+</button></div><div class="total">Total: ₹<span id="total-begun">40</span></div><button class="add" onclick="addToCart('begun')">🛒 Add to Cart</button></div>
+<div class="card" id="card-fulkopi"><img src="fulkopi.jpg"><h3>Cauliflower</h3><p class="sub">Vegetables</p><div class="price">₹35<span>/pcs</span></div><div class="qty"><button onclick="changeQty('fulkopi',-1)">−</button><span id="qty-fulkopi" style="font-size:13px">1 pcs</span><button onclick="changeQty('fulkopi',1)">+</button></div><div class="total">Total: ₹<span id="total-fulkopi">35</span></div><button class="add" onclick="addToCart('fulkopi')">🛒 Add to Cart</button></div>
+<div class="card" id="card-badhakopi"><img src="badhakopi.jpg"><h3>Cabbage</h3><p class="sub">Vegetables</p><div class="price">₹30<span>/pcs</span></div><div class="qty"><button onclick="changeQty('badhakopi',-1)">−</button><span id="qty-badhakopi" style="font-size:13px">1 pcs</span><button onclick="changeQty('badhakopi',1)">+</button></div><div class="total">Total: ₹<span id="total-badhakopi">30</span></div><button class="add" onclick="addToCart('badhakopi')">🛒 Add to Cart</button></div>
+<div class="card" id="card-peyaj"><img src="peyaj.jpg"><h3>Onion</h3><p class="sub">Vegetables</p><div class="price">₹45<span>/kg</span></div><div class="qty"><button onclick="changeQty('peyaj',-1)">−</button><span id="qty-peyaj" style="font-size:13px">1 kg</span><button onclick="changeQty('peyaj',1)">+</button></div><div class="total">Total: ₹<span id="total-peyaj">45</span></div><button class="add" onclick="addToCart('peyaj')">🛒 Add to Cart</button></div>
+<div class="card" id="card-lau"><img src="lau.jpeg"><h3>Bottle Gourd</h3><p class="sub">Vegetables</p><div class="price">₹20<span>/pcs</span></div><div class="qty"><button onclick="changeQty('lau',-1)">−</button><span id="qty-lau" style="font-size:13px">1 pcs</span><button onclick="changeQty('lau',1)">+</button></div><div class="total">Total: ₹<span id="total-lau">20</span></div><button class="add" onclick="addToCart('lau')">🛒 Add to Cart</button></div>
+<div class="card" id="card-palong"><img src="palong.jpeg"><h3>Spinach</h3><p class="sub">Vegetables</p><div class="price">₹15<span>/bunch</span></div><div class="qty"><button onclick="changeQty('palong',-1)">−</button><span id="qty-palong" style="font-size:13px">1 bunch</span><button onclick="changeQty('palong',1)">+</button></div><div class="total">Total: ₹<span id="total-palong">15</span></div><button class="add" onclick="addToCart('palong')">🛒 Add to Cart</button></div>
+</div>
+</div>
+
+<div id="orders-section" class="page-section">
 <h2>📋 My Orders</h2>
-<div id="my-orders-list">এখনো কোনো অর্ডার করেননি।</div>
+<div id="my-orders-list" style="margin-top:15px">এখনো কোনো অর্ডার করেননি। অর্ডার করলে এখানে দেখা যাবে।</div>
 </div>
 
-<div id="basketBar"><span>🛒 <span id="basketCount">0</span> items | ₹<span id="basketTotal">0</span></span><button onclick="document.getElementById('cust-name').scrollIntoView()" style="background:white;color:green;border:none;padding:6px 12px;border-radius:10px">View Cart</button></div>
+<div id="wishlist-section" class="page-section">
+<h2>♡ Wishlist</h2>
+<p style="margin-top:15px;color:#777">আপনার পছন্দের সবজি এখানে সেভ থাকবে। (পরের আপডেটে চালু হবে)</p>
+</div>
+
+<div id="profile-section" class="page-section">
+<h2>👤 Profile</h2>
+<div style="margin-top:15px;line-height:1.8">
+<b>FreshCart</b><br>
+Fresh Vegetables Delivered to Your Doorstep<br><br>
+📞 7584036364<br>
+📍 Faridabad, Telangana<br><br>
+<button style="background:#2e7d32;color:white;border:none;padding:10px 18px;border-radius:20px">Contact on WhatsApp</button>
+</div>
+</div>
+
+<div id="cart" style="margin:16px;background:white;padding:16px;border-radius:16px;display:none">
+<h3>🛒 My Basket</h3>
+<div id="cart-items" style="margin:10px 0"></div>
+<p style="font-size:12px;background:#fff8e1;padding:8px;border-radius:8px;margin:10px 0">Min Order: ₹199 | ₹500+ Free Delivery</p>
+<p>Subtotal: ₹<span id="grand-total">0</span> | Delivery: ₹<span id="delivery-charge">0</span> | <b>Payable: ₹<span id="payable-total">0</span></b></p>
+<input id="cust-name" placeholder="Your Name" style="width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:8px">
+<input id="cust-phone" placeholder="Phone Number" style="width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:8px">
+<textarea id="cust-address" placeholder="Full Address" style="width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:8px"></textarea>
+<button onclick="checkout()" style="width:100%;background:#22c55e;color:white;padding:12px;border:none;border-radius:10px;font-weight:bold">Checkout via WhatsApp</button>
+</div>
+
+<div class="basket" id="basketBar" style="display:none">
+<div style="display:flex;align-items:center;gap:10px"><div style="position:relative;font-size:22px">🧺<span id="basketCount" style="position:absolute;top:-8px;right:-8px;background:red;color:white;font-size:10px;padding:2px 5px;border-radius:50%">0</span></div><div><div style="font-size:12px;opacity:0.9">Your Basket</div><div style="font-weight:800;font-size:16px">Rs. <span id="basketTotal">0.00</span></div></div></div>
+<button onclick="document.getElementById('cart').style.display='block';document.getElementById('cart').scrollIntoView({behavior:'smooth'})" style="background:white;color:#2e7d32;border:none;padding:10px 18px;border-radius:20px;font-size:13px;font-weight:700">View Cart →</button>
+</div>
 
 <div class="bottom">
-<div onclick="showTab('home')" id="tab-home" class="active" style="cursor:pointer">🏠<br>Home</div>
-<div onclick="showTab('orders')" id="tab-orders" style="cursor:pointer">📋<br>My Orders</div>
-<div onclick="alert('Wishlist পরের আপডেটে আসবে')" style="cursor:pointer">♡<br>Wishlist</div>
-<div onclick="alert('Fresh Veg Delivery - Call 7584036364')" style="cursor:pointer">👤<br>Profile</div>
+<div onclick="showTab('home')" id="tab-home" class="active">🏠<br>Home</div>
+<div onclick="showTab('orders')" id="tab-orders">📋<br>My Orders</div>
+<div onclick="showTab('wishlist')" id="tab-wish">♡<br>Wishlist</div>
+<div onclick="showTab('profile')" id="tab-profile">👤<br>Profile</div>
 </div>
 
 <script>
@@ -65,19 +130,24 @@ let names={tomato:"Tomato",potato:"Potato",begun:"Brinjal",fulkopi:"Cauliflower"
 let cart={},grandTotal=0;
 
 function showTab(tab){
- document.getElementById('my-orders-section').style.display = tab=='orders'? 'block' : 'none';
- document.getElementById('veg-list').style.display = tab=='home'? '' : 'none';
- if(tab=='orders'){
-  let saved = localStorage.getItem('myOrders');
-  if(saved) document.getElementById('my-orders-list').innerHTML = saved;
- }
+ document.getElementById('home-content').style.display = tab=='home'? '' : 'none';
+ document.getElementById('cart').style.display = tab=='home'? document.getElementById('cart').style.display : 'none';
+ document.getElementById('orders-section').style.display = tab=='orders'? 'block' : 'none';
+ document.getElementById('wishlist-section').style.display = tab=='wishlist'? 'block' : 'none';
+ document.getElementById('profile-section').style.display = tab=='profile'? 'block' : 'none';
  document.getElementById('tab-home').className = tab=='home'? 'active' : '';
  document.getElementById('tab-orders').className = tab=='orders'? 'active' : '';
+ document.getElementById('tab-wish').className = tab=='wishlist'? 'active' : '';
+ document.getElementById('tab-profile').className = tab=='profile'? 'active' : '';
+ if(tab=='orders'){
+   let saved = localStorage.getItem('myOrders');
+   if(saved) document.getElementById('my-orders-list').innerHTML = saved;
+ }
  window.scrollTo(0,0);
 }
-function saveOrder(text){
+function saveOrder(html){
  let time = new Date().toLocaleString();
- let entry = `<div style="border:1px solid #ddd; padding:10px; border-radius:10px; margin-bottom:10px;"><b>${time}</b><br>${text}</div>`;
+ let entry = `<div style="border:1px solid #ddd;padding:12px;border-radius:12px;margin-bottom:12px;background:#f9fff9"><b>🕒 ${time}</b><br><br>${html}</div>`;
  let old = localStorage.getItem('myOrders') || '';
  localStorage.setItem('myOrders', entry + old);
 }
@@ -85,8 +155,8 @@ function searchVeg(){let input=document.getElementById('searchBox').value.toLowe
 function changeQty(item,delta){quantities[item]+=delta;if(quantities[item]<1)quantities[item]=1;document.getElementById('qty-'+item).innerText=quantities[item]+" "+units[item];document.getElementById('total-'+item).innerText=prices[item]*quantities[item];}
 function addToCart(item){if(!cart[item])cart[item]=0;cart[item]+=quantities[item];quantities[item]=1;document.getElementById('qty-'+item).innerText="1 "+units[item];document.getElementById('total-'+item).innerText=prices[item];updateCartUI();}
 function changeCartQty(item,delta){cart[item]+=delta;if(cart[item]<=0){delete cart[item];}updateCartUI();}
-function updateCartUI(){let total=0,count=0;for(let k in cart){total+=prices[k]*cart[k];count+=cart[k];}grandTotal=total;document.getElementById('basketTotal').innerText=total+".00";document.getElementById('basketCount').innerText=count;document.getElementById('grand-total').innerText=total;document.getElementById('basketBar').style.display=count>0?"flex":"none";let delivery=total>0&&total<500?30:0;document.getElementById('delivery-charge').innerText=delivery;document.getElementById('payable-total').innerText=total+delivery;let div=document.getElementById('cart-items');div.innerHTML="";for(let k in cart){div.innerHTML+=`<div style="display:flex;justify-content:space-between;align-items:center;margin:8px 0;background:#f9f9f9;padding:8px;border-radius:10px"><div>${names[k]} - ₹${prices[k]} x ${cart[k]} = ₹${prices[k]*cart[k]}</div><div style="display:flex;gap:6px;align-items:center"><button onclick="changeCartQty('${k}',-1)" style="width:26px;height:26px;border-radius:50%;border:none;background:#ffcdd2">-</button><span>${cart[k]}</span><button onclick="changeCartQty('${k}',1)" style="width:26px;height:26px;border-radius:50%;border:none;background:#c8e6c9">+</button><button onclick="changeCartQty('${k}',-${cart[k]})" style="border:none;background:none">🗑️</button></div></div>`;}}
-function checkout(){if(grandTotal==0){alert("Cart খালি!");return;}if(grandTotal<199){alert("Min 199 টাকা!");return;}let name=document.getElementById('cust-name').value,phone=document.getElementById('cust-phone').value,addr=document.getElementById('cust-address').value;if(!name||!phone||!addr){alert("Details লিখুন");return;}let del=grandTotal<500?30:0;let msg=`New Order%0AName:${name}%0APhone:${phone}%0AAddr:${addr}%0A`;for(let k in cart)msg+=`${names[k]} ${cart[k]}${units[k]}=₹${prices[k]*cart[k]}%0A`;msg+=`Total:₹${grandTotal+del}`;saveOrder(msg.replace(/%0A/g,'<br>'));window.open(`https://wa.me/917584036364?text=${msg}`,'_blank');}
+function updateCartUI(){let total=0,count=0;for(let k in cart){total+=prices[k]*cart[k];count+=cart[k];}grandTotal=total;document.getElementById('basketTotal').innerText=total+".00";document.getElementById('basketCount').innerText=count;document.getElementById('grand-total').innerText=total;document.getElementById('basketBar').style.display=count>0?"flex":"none";let delivery=total>0&&total<500?30:0;document.getElementById('delivery-charge').innerText=delivery;document.getElementById('payable-total').innerText=total+delivery;let div=document.getElementById('cart-items');div.innerHTML="";for(let k in cart){div.innerHTML+=`<div style="display:flex;justify-content:space-between;align-items:center;margin:8px 0;background:#f5f5f5;padding:8px 10px;border-radius:10px"><div>${names[k]} = ₹${prices[k]*cart[k]}</div><div style="display:flex;gap:6px;align-items:center"><button onclick="changeCartQty('${k}',-1)" style="width:26px;height:26px;border-radius:50%;border:none;background:#ffcdd2">-</button><span>${cart[k]}</span><button onclick="changeCartQty('${k}',1)" style="width:26px;height:26px;border-radius:50%;border:none;background:#c8e6c9">+</button><button onclick="changeCartQty('${k}',-${cart[k]})" style="border:none;background:none;font-size:16px">🗑️</button></div></div>`;}if(count>0)document.getElementById('cart').style.display='block';}
+function checkout(){if(grandTotal==0){alert("Cart খালি!");return;}if(grandTotal<199){alert("Min 199 টাকা লাগবে!");return;}let name=document.getElementById('cust-name').value,phone=document.getElementById('cust-phone').value,addr=document.getElementById('cust-address').value;if(!name||!phone||!addr){alert("Name, Phone, Address লিখুন");return;}let del=grandTotal<500?30:0;let msg=`New Order%0AName:${name}%0APhone:${phone}%0AAddr:${addr}%0A`;let htmlForSave="";for(let k in cart){msg+=`${names[k]} ${cart[k]}${units[k]}=₹${prices[k]*cart[k]}%0A`;htmlForSave+=`${names[k]} ${cart[k]}${units[k]} = ₹${prices[k]*cart[k]}<br>`;}msg+=`Delivery:₹${del}%0ATotal:₹${grandTotal+del}`;htmlForSave+=`Delivery: ₹${del}<br><b>Total: ₹${grandTotal+del}</b><br>Name: ${name}<br>Phone: ${phone}`;saveOrder(htmlForSave);window.open(`https://wa.me/917584036364?text=${msg}`,'_blank');}
 </script>
 </body>
 </html>
