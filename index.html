@@ -155,10 +155,24 @@ function updateCartUI(){let total=0,count=0;for(let k in cart){total+=prices[k]*
 function checkout(){
  if(grandTotal==0){alert("Cart খালি!");return;}
  if(grandTotal<199){alert("Min 199 টাকা লাগবে!");return;}
- let name=document.getElementById('cust-name').value,phone=document.getElementById('cust-phone').value;
+ let name=document.getElementById('cust-name').value;
+ let phone=document.getElementById('cust-phone').value;
+ let address=document.getElementById('cust-address').value;
  if(!name||!phone){alert("নাম ও ফোন দিন!");return;}
- let orderText = `New Order: ${name}, ${phone}, Total: ${grandTotal}`;
- window.open(`https://wa.me/917584036364?text=${encodeURIComponent(orderText)}`);
+
+ let itemsList = "";
+ for(let k in cart){
+   itemsList += `${names[k]} - ${cart[k]} ${units[k]} (Rs.${prices[k]*cart[k]})%0A`;
+ }
+ let delivery = grandTotal>0 && grandTotal<500 ? 30 : 0;
+ let payable = grandTotal + delivery;
+ let lat = localStorage.getItem('user_lat') || 'Not shared';
+ let lon = localStorage.getItem('user_lon') || 'Not shared';
+
+ let orderText = `*New Order - FreshCart*%0A%0A👤 Name: ${name}%0A📞 Phone: ${phone}%0A📍 Address: ${address}%0A🌍 Location: https://maps.google.com/?q=${lat},${lon}%0A%0A🛒 *Items:*%0A${itemsList}%0A💰 Subtotal: Rs.${grandTotal}%0A🚚 Delivery: Rs.${delivery}%0A*✅ Payable: Rs.${payable}*`;
+
+ saveOrder(orderText.replaceAll('%0A','<br>'));
+ window.open(`https://wa.me/917584036364?text=${orderText}`);
 }
 function closeLocationModal(){document.getElementById('location-modal').style.display='none';}
 function useMyLocation(){
