@@ -124,7 +124,24 @@ window.addEventListener('load', ()=>{
    setTimeout(()=>{ document.getElementById('location-modal').style.display='flex'; }, 1000);
  }
 });
-function showTab(t){ if(t==='home'){window.scrollTo(0,0);} }
+function showTab(tab){
+ document.getElementById('home-content').style.display = tab=='home'? '' : 'none';
+ document.getElementById('cart').style.display = tab=='home'? document.getElementById('cart').style.display : 'none';
+ document.getElementById('orders-section').style.display = tab=='orders'? 'block' : 'none';
+ document.getElementById('wishlist-section').style.display = tab=='wishlist'? 'block' : 'none';
+ document.getElementById('profile-section').style.display = tab=='profile'? 'block' : 'none';
+ document.getElementById('tab-home').className = tab=='home'? 'active' : '';
+ document.getElementById('tab-orders').className = tab=='orders'? 'active' : '';
+ document.getElementById('tab-wish').className = tab=='wishlist'? 'active' : '';
+ document.getElementById('tab-profile').className = tab=='profile'? 'active' : '';
+ window.scrollTo(0,0);
+}
+  <div class="bottom">
+<div onclick="showTab('home')" id="tab-home" class="active">🏠<br>Home</div>
+<div onclick="showTab('orders')" id="tab-orders">📋<br>My Orders</div>
+<div onclick="showTab('wishlist')" id="tab-wish">♡<br>Wishlist</div>
+<div onclick="showTab('profile')" id="tab-profile">👤<br>Profile</div>
+</div>
 </script>
 </body>
 </html>
