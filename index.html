@@ -78,26 +78,9 @@ body{background:#e8f5e9;padding-bottom:160px}
 </div>
 </div>
 
-<div id="orders-section" class="page-section">
-<h2>📋 My Orders</h2>
-<div id="my-orders-list" style="margin-top:15px">এখনো কোনো অর্ডার করেননি। অর্ডার করলে এখানে দেখা যাবে।</div>
-</div>
-
-<div id="wishlist-section" class="page-section">
-<h2>♡ Wishlist</h2>
-<p style="margin-top:15px;color:#777">আপনার পছন্দের সবজি এখানে সেভ থাকবে। (পরের আপডেটে চালু হবে)</p>
-</div>
-
-<div id="profile-section" class="page-section">
-<h2>👤 Profile</h2>
-<div style="margin-top:15px;line-height:1.8">
-<b>FreshCart</b><br>
-Fresh Vegetables Delivered to Your Doorstep<br><br>
-📞 7584036364<br>
-📍 Faridabad, Telangana<br><br>
-<button style="background:#2e7d32;color:white;border:none;padding:10px 18px;border-radius:20px">Contact on WhatsApp</button>
-</div>
-</div>
+<div id="orders-section" class="page-section"><h2>📋 My Orders</h2><div id="my-orders-list" style="margin-top:15px">এখনো কোনো অর্ডার করেননি।</div></div>
+<div id="wishlist-section" class="page-section"><h2>♡ Wishlist</h2><p style="margin-top:15px;color:#777">পছন্দের সবজি এখানে সেভ থাকবে।</p></div>
+<div id="profile-section" class="page-section"><h2>👤 Profile</h2><div style="margin-top:15px;line-height:1.8"><b>FreshCart</b><br>📞 7584036364<br>📍 Faridabad, Telangana</div></div>
 
 <div id="cart" style="margin:16px;background:white;padding:16px;border-radius:16px;display:none">
 <h3>🛒 My Basket</h3>
@@ -120,6 +103,18 @@ Fresh Vegetables Delivered to Your Doorstep<br><br>
 <div onclick="showTab('orders')" id="tab-orders">📋<br>My Orders</div>
 <div onclick="showTab('wishlist')" id="tab-wish">♡<br>Wishlist</div>
 <div onclick="showTab('profile')" id="tab-profile">👤<br>Profile</div>
+</div>
+
+<!-- Blinkit Location Modal - FIXED PLACE -->
+<div id="location-modal" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:99999;display:none;align-items:flex-end;justify-content:center;">
+  <div style="background:white;width:100%;max-width:500px;border-radius:20px 20px 0 0;padding:22px;text-align:center;">
+    <h3 style="margin:0">Select your location</h3>
+    <p id="loc-status" style="font-size:13px;color:#666;margin:8px 0 18px 0">We need your location to show curated assortment from your nearest store</p>
+    <div style="display:flex;gap:12px">
+      <button onclick="useMyLocation()" style="flex:1;background:#0C831F;color:white;border:none;padding:14px;border-radius:10px;font-weight:700">Use my location</button>
+      <button onclick="closeLocationModal()" style="flex:1;background:white;color:#0C831F;border:1px solid #0C831F;padding:14px;border-radius:10px;font-weight:700">Select manually</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -156,38 +151,30 @@ function changeQty(item,delta){quantities[item]+=delta;if(quantities[item]<1)qua
 function addToCart(item){if(!cart[item])cart[item]=0;cart[item]+=quantities[item];quantities[item]=1;document.getElementById('qty-'+item).innerText="1 "+units[item];document.getElementById('total-'+item).innerText=prices[item];updateCartUI();}
 function changeCartQty(item,delta){cart[item]+=delta;if(cart[item]<=0){delete cart[item];}updateCartUI();}
 function updateCartUI(){let total=0,count=0;for(let k in cart){total+=prices[k]*cart[k];count+=cart[k];}grandTotal=total;document.getElementById('basketTotal').innerText=total+".00";document.getElementById('basketCount').innerText=count;document.getElementById('grand-total').innerText=total;document.getElementById('basketBar').style.display=count>0?"flex":"none";let delivery=total>0&&total<500?30:0;document.getElementById('delivery-charge').innerText=delivery;document.getElementById('payable-total').innerText=total+delivery;let div=document.getElementById('cart-items');div.innerHTML="";for(let k in cart){div.innerHTML+=`<div style="display:flex;justify-content:space-between;align-items:center;margin:8px 0;background:#f5f5f5;padding:8px 10px;border-radius:10px"><div>${names[k]} = ₹${prices[k]*cart[k]}</div><div style="display:flex;gap:6px;align-items:center"><button onclick="changeCartQty('${k}',-1)" style="width:26px;height:26px;border-radius:50%;border:none;background:#ffcdd2">-</button><span>${cart[k]}</span><button onclick="changeCartQty('${k}',1)" style="width:26px;height:26px;border-radius:50%;border:none;background:#c8e6c9">+</button><button onclick="changeCartQty('${k}',-${cart[k]})" style="border:none;background:none;font-size:16px">🗑️</button></div></div>`;}if(count>0)document.getElementById('cart').style.display='block';}
-<div id="location-modal" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:99999;display:none;align-items:flex-end;justify-content:center;">
-  <div style="background:white;width:100%;max-width:500px;border-radius:20px 20px 0 0;padding:22px;text-align:center;font-family:sans-serif;">
-    <h3 style="margin:0">Select your location</h3>
-    <p id="loc-status" style="font-size:13px;color:#666;margin:8px 0 18px 0">We need your location to show curated assortment from your nearest store</p>
-    <div style="display:flex;gap:12px">
-      <button onclick="useMyLocation()" style="flex:1;background:#0C831F;color:white;border:none;padding:14px;border-radius:10px;font-weight:700">Use my location</button>
-      <button onclick="closeLocationModal()" style="flex:1;background:white;color:#0C831F;border:1px solid #0C831F;padding:14px;border-radius:10px;font-weight:700">Select manually</button>
-    </div>
-  </div>
-</div>
 
-<script>
-function checkout(){if(grandTotal==0){alert("Cart খালি!");return;}if(grandTotal<199){alert("Min 199 টাকা লাগবে!");return;}let name=document.getElementById('cust-name').value,phone=document.getElementById('cust-phone').value;if(!name||!phone){alert("নাম ও ফোন দিন!");return;}
-  let orderText = `New Order: ${name}, ${phone}, Total: ${grandTotal}`;
-  window.open(`https://wa.me/917584036364?text=${encodeURIComponent(orderText)}`);
+function checkout(){
+ if(grandTotal==0){alert("Cart খালি!");return;}
+ if(grandTotal<199){alert("Min 199 টাকা লাগবে!");return;}
+ let name=document.getElementById('cust-name').value,phone=document.getElementById('cust-phone').value;
+ if(!name||!phone){alert("নাম ও ফোন দিন!");return;}
+ let orderText = `New Order: ${name}, ${phone}, Total: ${grandTotal}`;
+ window.open(`https://wa.me/917584036364?text=${encodeURIComponent(orderText)}`);
 }
-function askBlinkitLocation(){document.getElementById('location-modal').style.display='flex';}
 function closeLocationModal(){document.getElementById('location-modal').style.display='none';}
 function useMyLocation(){
-  if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition((pos)=>{
-        localStorage.setItem('user_lat', pos.coords.latitude);
-        localStorage.setItem('user_lon', pos.coords.longitude);
-        document.getElementById('loc-status').innerText = "✅ Delivery available in your area!";
-        setTimeout(closeLocationModal, 1000);
-      },()=>{ alert("Please Allow Location Permission"); });
-  }
+ if(navigator.geolocation){
+   navigator.geolocation.getCurrentPosition((pos)=>{
+       localStorage.setItem('user_lat', pos.coords.latitude);
+       localStorage.setItem('user_lon', pos.coords.longitude);
+       document.getElementById('loc-status').innerText = "✅ Delivery available in your area!";
+       setTimeout(closeLocationModal, 1000);
+     },()=>{ alert("Please Allow Location Permission"); });
+ }
 }
 window.addEventListener('load', ()=>{
-  if(!localStorage.getItem('user_lat')){
-    setTimeout(()=>{ document.getElementById('location-modal').style.display='flex'; }, 1000);
-  }
+ if(!localStorage.getItem('user_lat')){
+   setTimeout(()=>{ document.getElementById('location-modal').style.display='flex'; }, 1000);
+ }
 });
 </script>
 </body>
