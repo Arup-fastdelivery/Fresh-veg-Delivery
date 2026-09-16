@@ -147,6 +147,10 @@ function showTab(tab){
  document.getElementById('tab-profile').className = tab=='profile'? 'active' : '';
  window.scrollTo(0,0);
 }
+  <script>
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js');
+}
 </script>
 </body>
 </html>
