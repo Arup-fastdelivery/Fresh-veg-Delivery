@@ -94,12 +94,38 @@ body{background:#e8f5e9;padding-bottom:160px}
 <button onclick="document.getElementById('cart').style.display='block';document.getElementById('cart').scrollIntoView({behavior:'smooth'})" style="background:white;color:#2e7d32;border:none;padding:10px 18px;border-radius:20px;font-size:13px;font-weight:700">View Cart →</button>
 </div>
 
-<div class="bottom">
-<div class="active">🏠<br>Home</div>
-<div>📋<br>My Orders</div>
-<div>♡<br>Wishlist</div>
-<div>👤<br>Profile</div>
+<div id="my-orders-section" style="display:none; padding:20px; background:white; min-height:70vh; margin:10px; border-radius:15px;">
+<h2>📋 My Orders</h2>
+<div id="my-orders-list">এখনো কোনো অর্ডার করেননি।</div>
 </div>
+
+<div class="bottom">
+<div onclick="showTab('home')" class="active" style="cursor:pointer">🏠<br>Home</div>
+<div onclick="showTab('orders')" style="cursor:pointer">📋<br>My Orders</div>
+<div onclick="alert('Wishlist পরের আপডেটে আসবে')" style="cursor:pointer">♡<br>Wishlist</div>
+<div onclick="alert('Profile: Fresh Veg Delivery - Call 7584036364')" style="cursor:pointer">👤<br>Profile</div>
+</div>
+
+<script>
+function showTab(tab){
+ if(tab=='home'){
+   document.getElementById('my-orders-section').style.display='none';
+   document.querySelectorAll('.card').forEach(c=>c.style.display='');
+   window.scrollTo(0,0);
+ } else if(tab=='orders'){
+   document.querySelectorAll('.card').forEach(c=>c.style.display='none');
+   document.getElementById('my-orders-section').style.display='block';
+   let saved = localStorage.getItem('myOrders');
+   if(saved) document.getElementById('my-orders-list').innerHTML = saved;
+ }
+}
+function saveOrder(text){
+ let time = new Date().toLocaleString();
+ let entry = `<div style="border:1px solid #ddd; padding:10px; border-radius:10px; margin-bottom:10px;"><b>${time}</b><br>${text}</div>`;
+ let old = localStorage.getItem('myOrders') || '';
+ localStorage.setItem('myOrders', entry + old);
+}
+</script>
 
 <script>
 let prices={tomato:30,potato:25,begun:40,fulkopi:35,badhakopi:30,peyaj:45,lau:20,palong:15};
