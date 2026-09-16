@@ -166,25 +166,39 @@ function checkout(){
  }
  let delivery = grandTotal>0 && grandTotal<500 ? 30 : 0;
  let payable = grandTotal + delivery;
- let lat = localStorage.getItem('user_lat') || 'Not shared';
- let lon = localStorage.getItem('user_lon') || 'Not shared';
+let delivery = grandTotal>0 && grandTotal<500 ? 30 : 0;
+let payable = grandTotal + delivery;
+let lat = localStorage.getItem('user_lat');
+let lon = localStorage.getItem('user_lon');
 
- let orderText = `*New Order - FreshCart*%0A%0A👤 Name: ${name}%0A📞 Phone: ${phone}%0A📍 Address: ${address}%0A🌍 Location: https://maps.google.com/?q=${lat},${lon}%0A%0A🛒 *Items:*%0A${itemsList}%0A💰 Subtotal: Rs.${grandTotal}%0A🚚 Delivery: Rs.${delivery}%0A*✅ Payable: Rs.${payable}*`;
-
- saveOrder(orderText.replaceAll('%0A','<br>'));
- window.open(`https://wa.me/917584036364?text=${orderText}`);
+if(!lat || !lon){
+  alert("📍 আগে Location Allow করুন, না হলে বাড়ি খুঁজে পাবো না!");
+  document.getElementById('location-modal').style.display='flex';
+  return;
 }
+
+let orderText = `*New Order - FreshCart*%0A%0A👤 Name: ${name}%0A📞 Phone: ${phone}%0A📍 Address: ${address}%0A🌍 Location: https://maps.google.com/?q=${lat},${lon}%0A%0A🛒 *Items:*%0A${itemsList}%0A💰 Subtotal: Rs.${grandTotal}%0A🚚 Delivery: Rs.${delivery}%0A*✅ Payable: Rs.${payable}*`;
+
+window.open(`https://wa.me/917584036364?text=${orderText}`);
+}
+
 function closeLocationModal(){document.getElementById('location-modal').style.display='none';}
+
 function useMyLocation(){
  if(navigator.geolocation){
+   document.getElementById('loc-status').innerText = "⏳ Location নেওয়া হচ্ছে...";
    navigator.geolocation.getCurrentPosition((pos)=>{
        localStorage.setItem('user_lat', pos.coords.latitude);
        localStorage.setItem('user_lon', pos.coords.longitude);
        document.getElementById('loc-status').innerText = "✅ Delivery available in your area!";
-       setTimeout(closeLocationModal, 1000);
-     },()=>{ alert("Please Allow Location Permission"); });
+       setTimeout(closeLocationModal, 800);
+     },()=>{ 
+       alert("Please Allow Location Permission - Browser এ Allow দিন"); 
+       document.getElementById('loc-status').innerText = "❌ Allow করুন";
+     }, {enableHighAccuracy:true});
  }
 }
+
 window.addEventListener('load', ()=>{
  if(!localStorage.getItem('user_lat')){
    setTimeout(()=>{ document.getElementById('location-modal').style.display='flex'; }, 1000);
