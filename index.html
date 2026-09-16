@@ -102,16 +102,16 @@ body{background:#e8f5e9;padding-bottom:160px}
 </div>
 
 <script>
-let prices={tomato:30,potato:25,begun:40,fulkopi:35,badhakopi:30,peyaj:45,lau:20,palong:15,dheros:30,korola:50,potol:40};
-let quantities={tomato:1,potato:1,begun:1,fulkopi:1,badhakopi:1,peyaj:1,lau:1,palong:1,dheros:1,korola:1,potol:1};
-let units={tomato:"kg",potato:"kg",begun:"kg",fulkopi:"pcs",badhakopi:"pcs",peyaj:"kg",lau:"pcs",palong:"bunch",dheros:"kg",korola:"kg",potol:"kg"};
-let names={tomato:"Tomato",potato:"Potato",begun:"Brinjal",fulkopi:"Cauliflower",badhakopi:"Cabbage",peyaj:"Onion",lau:"Lau",palong:"Palong",dheros:"Dheros",korola:"Korola",potol:"Potol"};
+let prices={tomato:30,potato:25,begun:40,fulkopi:35,badhakopi:30,peyaj:45,lau:20,palong:15};
+let quantities={tomato:1,potato:1,begun:1,fulkopi:1,badhakopi:1,peyaj:1,lau:1,palong:1};
+let units={tomato:"kg",potato:"kg",begun:"kg",fulkopi:"pcs",badhakopi:"pcs",peyaj:"kg",lau:"pcs",palong:"bunch"};
+let names={tomato:"Tomato",potato:"Potato",begun:"Brinjal",fulkopi:"Cauliflower",badhakopi:"Cabbage",peyaj:"Onion",lau:"Bottle Gourd",palong:"Spinach"};
 let cart={},grandTotal=0;
+
 function searchVeg(){let input=document.getElementById('searchBox').value.toLowerCase();let cards=document.getElementsByClassName('card');for(let c of cards){let t=c.innerText.toLowerCase();c.style.display=t.includes(input)?"":"none";}}
 function changeQty(item,delta){quantities[item]+=delta;if(quantities[item]<1)quantities[item]=1;document.getElementById('qty-'+item).innerText=quantities[item]+" "+units[item];document.getElementById('total-'+item).innerText=prices[item]*quantities[item];}
-function addToCart(item){if(!cart[item])cart[item]=0;cart[item]+=quantities[item];updateCartUI();}
-function updateCartUI(){let total=0,count=0;for(let k in cart){total+=prices[k]*cart[k];count+=cart[k];}grandTotal=total;document.getElementById('basketTotal').innerText=total+".00";document.getElementById('basketCount').innerText=count;document.getElementById('grand-total').innerText=total;document.getElementById('basketBar').style.display=count>0?"flex":"none";let delivery=total>0&&total<500?30:0;document.getElementById('delivery-charge').innerText=delivery;document.getElementById('payable-total').innerText=total+delivery;let div=document.getElementById('cart-items');div.innerHTML="";for(let k in cart){div.innerHTML+=`<div style="display:flex;justify-content:space-between;margin:6px 0">${names[k]} - ${cart[k]} ${units[k]} = ₹${prices[k]*cart[k]}</div>`;}document.getElementById('cart-items').style.display="block";}
+function addToCart(item){if(!cart[item])cart[item]=0;cart[item]+=quantities[item];quantities[item]=1;document.getElementById('qty-'+item).innerText="1 "+units[item];document.getElementById('total-'+item).innerText=prices[item];updateCartUI();}
+function changeCartQty(item,delta){cart[item]+=delta;if(cart[item]<=0){delete cart[item];}updateCartUI();}
+function updateCartUI(){let total=0,count=0;for(let k in cart){total+=prices[k]*cart[k];count+=cart[k];}grandTotal=total;document.getElementById('basketTotal').innerText=total+".00";document.getElementById('basketCount').innerText=count;document.getElementById('grand-total').innerText=total;document.getElementById('basketBar').style.display=count>0?"flex":"none";let delivery=total>0&&total<500?30:0;document.getElementById('delivery-charge').innerText=delivery;document.getElementById('payable-total').innerText=total+delivery;let div=document.getElementById('cart-items');div.innerHTML="";for(let k in cart){div.innerHTML+=`<div style="display:flex;justify-content:space-between;align-items:center;margin:8px 0;background:#f9f9f9;padding:8px;border-radius:10px"><div>${names[k]} - ₹${prices[k]} x ${cart[k]} = ₹${prices[k]*cart[k]}</div><div style="display:flex;gap:6px;align-items:center"><button onclick="changeCartQty('${k}',-1)" style="width:26px;height:26px;border-radius:50%;border:none;background:#ffcdd2">-</button><span>${cart[k]}</span><button onclick="changeCartQty('${k}',1)" style="width:26px;height:26px;border-radius:50%;border:none;background:#c8e6c9">+</button><button onclick="changeCartQty('${k}',-${cart[k]})" style="border:none;background:none">🗑️</button></div></div>`;}}
 function checkout(){if(grandTotal==0){alert("Cart খালি!");return;}if(grandTotal<199){alert("Min 199 টাকা!");return;}let name=document.getElementById('cust-name').value,phone=document.getElementById('cust-phone').value,addr=document.getElementById('cust-address').value;if(!name||!phone||!addr){alert("Details লিখুন");return;}let del=grandTotal<500?30:0;let msg=`New Order%0AName:${name}%0APhone:${phone}%0AAddr:${addr}%0A`;for(let k in cart)msg+=`${names[k]} ${cart[k]}${units[k]}=₹${prices[k]*cart[k]}%0A`;msg+=`Total:₹${grandTotal+del}`;window.open(`https://wa.me/917584036364?text=${msg}`,'_blank');}
 </script>
-</body>
-</html>
