@@ -36,8 +36,15 @@ body{background:#e8f5e9;padding-bottom:160px}
 </style>
 </head>
 <body>
-<div class="header"><div class="logo"><div style="font-size:28px">🌿</div><div><h2>FreshCart</h2><p>Fresh Vegetables Delivered</p></div></div></div>
-<div class="search-wrap"><div class="search-box">🔍<input id="searchBox" onkeyup="searchVeg()" placeholder="Search vegetables..."></div></div>
+<div class="header">
+  <div class="logo">🌿 FreshCart<br><span style="font-size:11px;color:#666;font-weight:400">Fresh Vegetables Delivered</span></div>
+  <div class="top-icons">
+    <div class="icon-btn">🔔<span class="dot"></span></div>
+    <div class="icon-btn" style="background:#2e7d32;color:white">👤</div>
+  </div>
+</div>
+
+<div class="search-box">🔍 <input type="text" id="search" placeholder="Search vegetables or fruits..."></div>
 
 <div id="home-content">
 <div class="banner"><div><h1>Fresh<br>Healthy<br>Natural</h1><p>100% Fresh Vegetables<br>Direct from Farmers</p><button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now →</button></div><img src="banner.jpeg" style="width:115px;height:115px;object-fit:cover;border-radius:16px;" onerror="this.src='https://via.placeholder.com/115'"></div>
