@@ -68,8 +68,18 @@ body{background:#e8f5e9;padding-bottom:160px}
 </div>
 
 <div id="home-content">
-<div class="banner"><div><h1>Fresh<br>Healthy<br>Natural</h1><p>100% Fresh Vegetables<br>Direct from Farmers</p><button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now →</button></div><img src="banner.jpeg" style="width:115px;height:115px;object-fit:cover;border-radius:16px;" onerror="this.src='https://via.placeholder.com/115'"></div>
+<div class="banner"><div><h1>Fresh<br>Healthy<br>Natural</h1><p>100% Fresh Vegetables<br>Direct from Farmers</p>
+<button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now →</button></div>
+  <img src="banner.jpeg" style="width:115px;height:115px;object-fit:cover;border-radius:16px;" onerror="this.src='https://via.placeholder.com/115'"></div>
 <div class="products" id="products" style="margin-top:14px">
+<div class="card" data-cat="biriyani">
+<img src="biriyani.jpeg">
+<h3>Biriyani Special Combo</h3>
+<div class="price">₹199<span>/combo</span></div>
+<div class="qty"><button onclick="changeQty('biriyani',-1)">−</button><span id="qty-biriyani">1 combo</span><button onclick="changeQty('biriyani',1)">+</button></div>
+<div class="total">Total: ₹<span id="total-biriyani">199</span></div>
+<button class="add" onclick="addToCart('biriyani')">🛒 Add</button>
+</div>
 <div class="card" data-cat="vegetables biriyani"><img src="tomato.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Tomato</h3><div class="price">₹30<span>/kg</span></div><div class="qty"><button onclick="changeQty('tomato',-1)">−</button><span id="qty-tomato">1 kg</span><button onclick="changeQty('tomato',1)">+</button></div><div class="total">Total: ₹<span id="total-tomato">30</span></div><button class="add" onclick="addToCart('tomato')">🛒 Add</button></div>
 <div class="card" data-cat="vegetables snack biriyani"><img src="potato.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Potato</h3><div class="price">₹25<span>/kg</span></div><div class="qty"><button onclick="changeQty('potato',-1)">−</button><span id="qty-potato">1 kg</span><button onclick="changeQty('potato',1)">+</button></div><div class="total">Total: ₹<span id="total-potato">25</span></div><button class="add" onclick="addToCart('potato')">🛒 Add</button></div>
 <div class="card" data-cat="vegetables cooking"><img src="begun.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Brinjal</h3><div class="price">₹40<span>/kg</span></div><div class="qty"><button onclick="changeQty('begun',-1)">−</button><span id="qty-begun">1 kg</span><button onclick="changeQty('begun',1)">+</button></div><div class="total">Total: ₹<span id="total-begun">40</span></div><button class="add" onclick="addToCart('begun')">🛒 Add</button></div>
@@ -108,10 +118,10 @@ body{background:#e8f5e9;padding-bottom:160px}
 </div>
 
 <script>
-let prices={tomato:30,potato:25,begun:40,fulkopi:35,badhakopi:30,peyaj:45,lau:20,palong:15};
-let quantities={tomato:1,potato:1,begun:1,fulkopi:1,badhakopi:1,peyaj:1,lau:1,palong:1};
-let units={tomato:"kg",potato:"kg",begun:"kg",fulkopi:"pcs",badhakopi:"pcs",peyaj:"kg",lau:"pcs",palong:"bunch"};
-let names={tomato:"Tomato",potato:"Potato",begun:"Brinjal",fulkopi:"Cauliflower",badhakopi:"Cabbage",peyaj:"Onion",lau:"Bottle Gourd",palong:"Spinach"};
+let prices={tomato:30,potato:25,begun:60,fulkopi:35,badhakopi:30,peyaj:45,lau:20,palong:15,biriyani:199};
+let quantities={tomato:1,potato:1,begun:1,fulkopi:1,badhakopi:1,peyaj:1,lau:1,palong:1,biriyani:1};
+let units={tomato:"kg",potato:"kg",begun:"kg",fulkopi:"pcs",badhakopi:"pcs",peyaj:"kg",lau:"pcs",palong:"bunch",biriyani:"combo"};
+let names={tomato:"Tomato",potato:"Potato",begun:"Brinjal",fulkopi:"Cauliflower",badhakopi:"Cabbage",peyaj:"Onion",lau:"Bottle Gourd",palong:"Spinach",biriyani:"Biriyani Combo"};
 let cart={},grandTotal=0;
 
 function searchVeg(){
