@@ -28,8 +28,7 @@ body{background:#e8f5e9;padding-bottom:160px}
 .qty button{width:24px;height:24px;border-radius:50%;border:none;background:#c8e6c9;color:#2e7d32;font-weight:bold;cursor:pointer}
 .add{width:100%;background:#2e7d32;color:white;border:none;padding:9px;border-radius:20px;font-size:12px;font-weight:600;margin-top:6px}
 .total{font-size:11px;text-align:center;color:#555;font-weight:600;margin-top:4px}
-.basket{position:fixed;bottom:75px;left:12px;right:12px;background:#2e7d32;border-radius:16px;padding:14px 16px;display:flex;justify-content
-:space-between;align-items:center;box-shadow:0 8px 20px rgba(0,0,0,0.2);z-index:10;color:white}
+.basket{position:fixed;bottom:75px;left:12px;right:12px;background:#2e7d32;border-radius:16px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 8px 20px rgba(0,0,0,0.2);z-index:10;color:white}
 .bottom{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:12px 0 8px 0;border-top:1px solid #eee;z-index:11}
 .bottom div{text-align:center;font-size:11px;color:#888;cursor:pointer}
 .bottom div.active{color:#2e7d32;font-weight:700}
@@ -53,9 +52,7 @@ body{background:#e8f5e9;padding-bottom:160px}
 <div class="filters">
   <button class="filter active" onclick="filterProd('all', this)">🌿 All</button>
   <button class="filter" onclick="filterProd('vegetables', this)">🥕 Vegetables</button>
-  <button class="filter" onclick="filterProd('fruits', this)">🍎 Fruits</button>
   <button class="filter" onclick="filterProd('herbs', this)">🌿 Herbs</button>
-  <button class="filter" onclick="filterProd('snack', this)">🍿 Snack it away</button>
   <button class="filter" onclick="filterProd('cooking', this)">🍳 Cooking ideas</button>
   <button class="filter" onclick="filterProd('biriyani', this)">🍛 Biriyani option</button>
 </div>
@@ -71,113 +68,35 @@ body{background:#e8f5e9;padding-bottom:160px}
     <span id="qty-biriyani">1 combo</span><button onclick="changeQty('biriyani',1)">+</button></div><div class="total">Total: ₹<span id="total-biriyani">199</span>
     </div><button class="add" onclick="addToCart('biriyani')">🛒 Add</button></div>
 
-<div class="card" data-cat="cooking">
-  <img src="mutton.jpg" onerror="this.src='https://via.placeholder.com/150'">
-  <h3>Mutton Sukka</h3><div class="price">₹280<span>/plate</span></div><div class="qty">
-    <button onclick="changeQty('mutton',-1)">−</button><span id="qty-mutton">1 plate</span><button onclick="changeQty('mutton',1)">+</button>
-  </div><div class="total">Total: ₹<span id="total-mutton">280</span></div><button class="add" onclick="addToCart('mutton')">Add</button></div>
-<div class="card" data-cat="cooking">
-  <img src="dosa.jpg" onerror="this.src='https://via.placeholder.com/150'">
-  <h3>Onion Masala Dosa</h3><div class="price">₹90<span>/pcs</span></div><div class="qty">
-    <button onclick="changeQty('dosa',-1)">−</button><span id="qty-dosa">1 pcs</span><button onclick="changeQty('dosa',1)">+</button>
-  </div><div class="total">Total: ₹<span id="total-dosa">90</span></div><button class="add" onclick="addToCart('dosa')">Add</button></div>
-<div class="card" data-cat="cooking">
-  <img src="prawn.jpg" onerror="this.src='https://via.placeholder.com/150'">
-  <h3>Prawns Biryani</h3><div class="price">₹320<span>/plate</span></div><div class="qty">
-    <button onclick="changeQty('prawn',-1)">−</button><span id="qty-prawn">1 plate</span><button onclick="changeQty('prawn',1)">+</button>
-  </div><div class="total">Total: ₹<span id="total-prawn">320</span></div><button class="add" onclick="addToCart('prawn')">Add</button></div>
-<div class="card" data-cat="cooking">
-  <img src="shahi.jpg" onerror="this.src='https://via.placeholder.com/150'">
-  <h3>Shahi Biryani</h3><div class="price">₹350<span>/plate</span></div><div class="qty">
-    <button onclick="changeQty('shahi',-1)">−</button><span id="qty-shahi">1 plate</span><button onclick="changeQty('shahi',1)">+</button>
-  </div><div class="total">Total: ₹<span id="total-shahi">350</span></div><button class="add" onclick="addToCart('shahi')">Add</button></div>
-<div class="card" data-cat="cooking">
-  <img src="kema.jpg" onerror="this.src='https://via.placeholder.com/150'">
-  <h3>Kema Masala</h3><div class="price">₹260<span>/plate</span></div><div class="qty">
-    <button onclick="changeQty('kema',-1)">−</button><span id="qty-kema">1 plate</span><button onclick="changeQty('kema',1)">+</button>
-  </div><div class="total">Total: ₹<span id="total-kema">260</span></div><button class="add" onclick="addToCart('kema')">Add</button></div>
-<div class="card" data-cat="cooking">
-  <img src="boneless.jpg" onerror="this.src='https://via.placeholder.com/150'">
-  <h3>Boneless Chicken</h3><div class="price">₹240<span>/plate</span></div><div class="qty">
-    <button onclick="changeQty('boneless',-1)">−</button><span id="qty-boneless">1 plate</span><button onclick="changeQty('boneless',1)">+</button>
-  </div><div class="total">Total: ₹<span id="total-boneless">240</span></div><button class="add" onclick="addToCart('boneless')">Add</button></div>
-<div class="card" data-cat="cooking">
-  <img src="sambar.jpg" onerror="this.src='https://via.placeholder.com/150'">
-  <h3>Cabbage Sambhar</h3><div class="price">₹120<span>/bowl</span></div><div class="qty">
-    <button onclick="changeQty('sambar',-1)">−</button><span id="qty-sambar">1 bowl</span><button onclick="changeQty('sambar',1)">+</button>
-  </div><div class="total">Total: ₹<span id="total-sambar">120</span></div><button class="add" onclick="addToCart('sambar')">Add</button></div>
-<div class="card" data-cat="cooking">
-  <img src="kaju.jpg" onerror="this.src='https://via.placeholder.com/150'">
-  <h3>Kaju Chicken Curry</h3><div class="price">₹300<span>/plate</span></div><div class="qty">
-    <button onclick="changeQty('kaju',-1)">−</button><span id="qty-kaju">1 plate</span><button onclick="changeQty('kaju',1)">+</button>
-  </div><div class="total">Total: ₹<span id="total-kaju">300</span></div><button class="add" onclick="addToCart('kaju')">Add</button></div>
-<div class="card" data-cat="cooking">
-  <img src="dopyaza.jpg" onerror="this.src='https://via.placeholder.com/150'">
-  <h3>Mutton Do Pyaza</h3><div class="price">₹290<span>/plate</span></div><div class="qty">
-    <button onclick="changeQty('dopyaza',-1)">−</button><span id="qty-dopyaza">1 plate</span><button onclick="changeQty('dopyaza',1)">+</button>
-  </div><div class="total">Total: ₹<span id="total-dopyaza">290</span></div><button class="add" onclick="addToCart('dopyaza')">Add</button></div>
+<div class="card" data-cat="cooking"><img src="mutton.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Mutton Sukka</h3><div class="price">₹280<span>/plate</span></div><div class="qty"><button onclick="changeQty('mutton',-1)">−</button><span id="qty-mutton">1 plate</span><button onclick="changeQty('mutton',1)">+</button></div><div class="total">Total: ₹<span id="total-mutton">280</span></div><button class="add" onclick="addToCart('mutton')">Add</button></div>
+<div class="card" data-cat="cooking"><img src="dosa.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Onion Masala Dosa</h3><div class="price">₹90<span>/pcs</span></div><div class="qty"><button onclick="changeQty('dosa',-1)">−</button><span id="qty-dosa">1 pcs</span><button onclick="changeQty('dosa',1)">+</button></div><div class="total">Total: ₹<span id="total-dosa">90</span></div><button class="add" onclick="addToCart('dosa')">Add</button></div>
+<div class="card" data-cat="cooking"><img src="prawn.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Prawns Biryani</h3><div class="price">₹320<span>/plate</span></div><div class="qty"><button onclick="changeQty('prawn',-1)">−</button><span id="qty-prawn">1 plate</span><button onclick="changeQty('prawn',1)">+</button></div><div class="total">Total: ₹<span id="total-prawn">320</span></div><button class="add" onclick="addToCart('prawn')">Add</button></div>
+<div class="card" data-cat="cooking"><img src="shahi.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Shahi Biryani</h3><div class="price">₹350<span>/plate</span></div><div class="qty"><button onclick="changeQty('shahi',-1)">−</button><span id="qty-shahi">1 plate</span><button onclick="changeQty('shahi',1)">+</button></div><div class="total">Total: ₹<span id="total-shahi">350</span></div><button class="add" onclick="addToCart('shahi')">Add</button></div>
+<div class="card" data-cat="cooking"><img src="kema.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Kema Masala</h3><div class="price">₹260<span>/plate</span></div><div class="qty"><button onclick="changeQty('kema',-1)">−</button><span id="qty-kema">1 plate</span><button onclick="changeQty('kema',1)">+</button></div><div class="total">Total: ₹<span id="total-kema">260</span></div><button class="add" onclick="addToCart('kema')">Add</button></div>
+<div class="card" data-cat="cooking"><img src="boneless.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Boneless Chicken</h3><div class="price">₹240<span>/plate</span></div><div class="qty"><button onclick="changeQty('boneless',-1)">−</button><span id="qty-boneless">1 plate</span><button onclick="changeQty('boneless',1)">+</button></div><div class="total">Total: ₹<span id="total-boneless">240</span></div><button class="add" onclick="addToCart('boneless')">Add</button></div>
+<div class="card" data-cat="cooking"><img src="sambar.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Cabbage Sambhar</h3><div class="price">₹120<span>/bowl</span></div><div class="qty"><button onclick="changeQty('sambar',-1)">−</button><span id="qty-sambar">1 bowl</span><button onclick="changeQty('sambar',1)">+</button></div><div class="total">Total: ₹<span id="total-sambar">120</span></div><button class="add" onclick="addToCart('sambar')">Add</button></div>
+<div class="card" data-cat="cooking"><img src="kaju.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Kaju Chicken Curry</h3><div class="price">₹300<span>/plate</span></div><div class="qty"><button onclick="changeQty('kaju',-1)">−</button><span id="qty-kaju">1 plate</span><button onclick="changeQty('kaju',1)">+</button></div><div class="total">Total: ₹<span id="total-kaju">300</span></div><button class="add" onclick="addToCart('kaju')">Add</button></div>
+<div class="card" data-cat="cooking"><img src="dopyaza.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Mutton Do Pyaza</h3><div class="price">₹290<span>/plate</span></div><div class="qty"><button onclick="changeQty('dopyaza',-1)">−</button><span id="qty-dopyaza">1 plate</span><button onclick="changeQty('dopyaza',1)">+</button></div><div class="total">Total: ₹<span id="total-dopyaza">290</span></div><button class="add" onclick="addToCart('dopyaza')">Add</button></div>
 
-<div class="card" data-cat="vegetables">
-  <img src="tomato.jpg" onerror="this.src='https://via.placeholder.com/150'">
-  <h3>Tomato</h3><div class="price">₹30<span>/kg</span></div><div class="qty">
-    <button onclick="changeQty('tomato',-1)">−</button><span id="qty-tomato">1 kg</span><button onclick="changeQty('tomato',1)">+</button>
-  </div><div class="total">Total: ₹<span id="total-tomato">30</span></div><button class="add" onclick="addToCart('tomato')">Add</button></div>
-<div class="card" data-cat="vegetables">
-  <img src="potato.jpg" onerror="this.src='https://via.placeholder.com/150'">
-  <h3>Potato</h3><div class="price">₹25<span>/kg</span></div><div class="qty">
-    <button onclick="changeQty('potato',-1)">−</button><span id="qty-potato">1 kg</span><button onclick="changeQty('potato',1)">+</button>
-  </div><div class="total">Total: ₹<span id="total-potato">25</span></div><button class="add" onclick="addToCart('potato')">Add</button></div>
-<div class="card" data-cat="vegetables">
-  <img src="begun.jpg" onerror="this.src='https://via.placeholder.com/150'">
-  <h3>Brinjal</h3><div class="price">₹60<span>/kg</span></div><div class="qty">
-    <button onclick="changeQty('begun',-1)">−</button><span id="qty-begun">1 kg</span><button onclick="changeQty('begun',1)">+</button>
-  </div><div class="total">Total: ₹<span id="total-begun">60</span></div><button class="add" onclick="addToCart('begun')">Add</button></div>
-<div class="card" data-cat="vegetables">
-  <img src="fulkopi.jpg" onerror="this.src='https://via.placeholder.com/150'">
-  <h3>Cauliflower</h3><div class="price">₹35<span>/pcs</span></div><div class="qty">
-    <button onclick="changeQty('fulkopi',-1)">−</button><span id="qty-fulkopi">1 pcs</span><button onclick="changeQty('fulkopi',1)">+</button>
-  </div><div class="total">Total: ₹<span id="total-fulkopi">35</span></div><button class="add" onclick="addToCart('fulkopi')">Add</button></div>
-<div class="card" data-cat="vegetables">
-  <img src="badhakopi.jpg" onerror="this.src='https://via.placeholder.com/150'">
-  <h3>Cabbage</h3><div class="price">₹30<span>/pcs</span></div><div class="qty">
-    <button onclick="changeQty('badhakopi',-1)">−</button><span id="qty-badhakopi">1 pcs</span><button onclick="changeQty('badhakopi',1)">+</button>
-  </div><div class="total">Total: ₹<span id="total-badhakopi">30</span></div><button class="add" onclick="addToCart('badhakopi')">Add</button></div>
-<div class="card" data-cat="vegetables">
-  <img src="peyaj.jpg" onerror="this.src='https://via.placeholder.com/150'">
-  <h3>Onion</h3><div class="price">₹45<span>/kg</span></div><div class="qty">
-    <button onclick="changeQty('peyaj',-1)">−</button><span id="qty-peyaj">1 kg</span><button onclick="changeQty('peyaj',1)">+</button>
-  </div><div class="total">Total: ₹<span id="total-peyaj">45</span></div><button class="add" onclick="addToCart('peyaj')">Add</button></div>
-<div class="card" data-cat="vegetables">
-  <img src="lau.jpg" onerror="this.src='https://via.placeholder.com/150'">
-  <h3>Bottle Gourd</h3><div class="price">₹20<span>/pcs</span></div><div class="qty">
-    <button onclick="changeQty('lau',-1)">−</button><span id="qty-lau">1 pcs</span><button onclick="changeQty('lau',1)">+</button>
-  </div><div class="total">Total: ₹<span id="total-lau">20</span></div><button class="add" onclick="addToCart('lau')">Add</button></div>
-<div class="card" data-cat="herbs">
-<img src="palong.jpg" onerror="this.src='https://via.placeholder.com/150'">
-<h3>Spinach</h3><div class="price">₹15<span>/bunch</span></div><div class="qty">
-<button onclick="changeQty('palong',-1)">−</button><span id="qty-palong">1 bunch</span><button onclick="changeQty('palong',1)">+</button>
-</div><div class="total">Total: ₹<span id="total-palong">15</span></div><button class="add" onclick="addToCart('palong')">Add</button></div>
-</div><!-- END PRODUCTS - এটা খুব জরুরি -->
+<div class="card" data-cat="vegetables"><img src="tomato.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Tomato</h3><div class="price">₹30<span>/kg</span></div><div class="qty"><button onclick="changeQty('tomato',-1)">−</button><span id="qty-tomato">1 kg</span><button onclick="changeQty('tomato',1)">+</button></div><div class="total">Total: ₹<span id="total-tomato">30</span></div><button class="add" onclick="addToCart('tomato')">Add</button></div>
+<div class="card" data-cat="vegetables"><img src="potato.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Potato</h3><div class="price">₹25<span>/kg</span></div><div class="qty"><button onclick="changeQty('potato',-1)">−</button><span id="qty-potato">1 kg</span><button onclick="changeQty('potato',1)">+</button></div><div class="total">Total: ₹<span id="total-potato">25</span></div><button class="add" onclick="addToCart('potato')">Add</button></div>
+<div class="card" data-cat="vegetables"><img src="begun.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Brinjal</h3><div class="price">₹60<span>/kg</span></div><div class="qty"><button onclick="changeQty('begun',-1)">−</button><span id="qty-begun">1 kg</span><button onclick="changeQty('begun',1)">+</button></div><div class="total">Total: ₹<span id="total-begun">60</span></div><button class="add" onclick="addToCart('begun')">Add</button></div>
+<div class="card" data-cat="vegetables"><img src="fulkopi.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Cauliflower</h3><div class="price">₹35<span>/pcs</span></div><div class="qty"><button onclick="changeQty('fulkopi',-1)">−</button><span id="qty-fulkopi">1 pcs</span><button onclick="changeQty('fulkopi',1)">+</button></div><div class="total">Total: ₹<span id="total-fulkopi">35</span></div><button class="add" onclick="addToCart('fulkopi')">Add</button></div>
+<div class="card" data-cat="vegetables"><img src="badhakopi.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Cabbage</h3><div class="price">₹30<span>/pcs</span></div><div class="qty"><button onclick="changeQty('badhakopi',-1)">−</button><span id="qty-badhakopi">1 pcs</span><button onclick="changeQty('badhakopi',1)">+</button></div><div class="total">Total: ₹<span id="total-badhakopi">30</span></div><button class="add" onclick="addToCart('badhakopi')">Add</button></div>
+<div class="card" data-cat="vegetables"><img src="peyaj.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Onion</h3><div class="price">₹45<span>/kg</span></div><div class="qty"><button onclick="changeQty('peyaj',-1)">−</button><span id="qty-peyaj">1 kg</span><button onclick="changeQty('peyaj',1)">+</button></div><div class="total">Total: ₹<span id="total-peyaj">45</span></div><button class="add" onclick="addToCart('peyaj')">Add</button></div>
+<div class="card" data-cat="vegetables"><img src="lau.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Bottle Gourd</h3><div class="price">₹20<span>/pcs</span></div><div class="qty"><button onclick="changeQty('lau',-1)">−</button><span id="qty-lau">1 pcs</span><button onclick="changeQty('lau',1)">+</button></div><div class="total">Total: ₹<span id="total-lau">20</span></div><button class="add" onclick="addToCart('lau')">Add</button></div>
+<div class="card" data-cat="herbs"><img src="palong.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Spinach</h3><div class="price">₹15<span>/bunch</span></div><div class="qty"><button onclick="changeQty('palong',-1)">−</button><span id="qty-palong">1 bunch</span><button onclick="changeQty('palong',1)">+</button></div><div class="total">Total: ₹<span id="total-palong">15</span></div><button class="add" onclick="addToCart('palong')">Add</button></div>
+</div>
 
 <div id="cart" style="margin:16px;background:white;padding:16px;border-radius:16px;display:none">
-  <h3>🛒 My Basket</h3><div id="cart-items" style="margin:10px 0"></div><p>Subtotal: ₹<span id="grand-total">0</span> | Delivery: 
-    ₹<span id="delivery-charge">0</span> | <b>Payable: ₹<span id="payable-total">0</span></b></p><input id="cust-name" placeholder="Your Name" 
-      style="width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:8px"><input id="cust-phone" placeholder="Phone Number" 
-      style="width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:8px"><textarea id="cust-address" placeholder="Full Address" 
-      style="width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:8px"></textarea><button onclick="checkout()" 
-      style="width:100%;background:#22c55e;color:white;padding:12px;border:none;border-radius:10px;font-weight:bold">Checkout via WhatsApp</button></div>
+  <h3>🛒 My Basket</h3><div id="cart-items" style="margin:10px 0"></div><p>Subtotal: ₹<span id="grand-total">0</span> | Delivery: ₹<span id="delivery-charge">0</span> | <b>Payable: ₹<span id="payable-total">0</span></b></p><input id="cust-name" placeholder="Your Name" style="width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:8px"><input id="cust-phone" placeholder="Phone Number" style="width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:8px"><textarea id="cust-address" placeholder="Full Address" style="width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:8px"></textarea><button onclick="checkout()" style="width:100%;background:#22c55e;color:white;padding:12px;border:none;border-radius:10px;font-weight:bold">Checkout via WhatsApp</button></div>
 </div>
 
 <div id="orders-section" class="page-section"><h2>📋 My Orders</h2><p style="color:#777;margin-top:10px">Your orders will appear here.</p></div>
 <div id="wishlist-section" class="page-section"><h2>♡ Wishlist</h2><p style="color:#777;margin-top:10px">Your favourite items will appear here.</p></div>
-<div id="profile-section" class="page-section"><h2>👤 Profile</h2><p style="margin-top:10px">Welcome to FreshCart</p><p style="color:#555;margin-top:8px;font-size:14px">📍 Location: 
-  <span id="profile-loc">Not set yet</span></p></div>
+<div id="profile-section" class="page-section"><h2>👤 Profile</h2><p style="margin-top:10px">Welcome to FreshCart</p></div>
 
-<div class="basket" id="basketBar" style="display:none"><div style="display:flex;align-items:center;gap:10px"><div style="position:relative;font-size:22px">🧺<span 
-id="basketCount" style="position:absolute;top:-8px;right:-8px;background:red;color:white;font-size:10px;padding:2px 5px;border-radius:50%">0</span>
-</div><div><div style="font-size:12px">Your Basket</div><div style="font-weight:800;font-size:16px">Rs. <span id="basketTotal">0.00</span></div>
-</div></div><button onclick="document.getElementById('cart').style.display='block';document.getElementById('cart').scrollIntoView({behavior:'smooth'})" 
-    style="background:white;color:#2e7d32;border:none;padding:10px 18px;border-radius:20px;font-weight:700">View Cart →</button></div>
+<div class="basket" id="basketBar" style="display:none"><div style="display:flex;align-items:center;gap:10px"><div style="position:relative;font-size:22px">🧺<span id="basketCount" style="position:absolute;top:-8px;right:-8px;background:red;color:white;font-size:10px;padding:2px 5px;border-radius:50%">0</span></div><div><div style="font-size:12px">Your Basket</div><div style="font-weight:800;font-size:16px">Rs. <span id="basketTotal">0.00</span></div></div></div><button onclick="document.getElementById('cart').style.display='block';document.getElementById('cart').scrollIntoView({behavior:'smooth'})" style="background:white;color:#2e7d32;border:none;padding:10px 18px;border-radius:20px;font-weight:700">View Cart →</button></div>
 
 <div class="bottom">
 <div onclick="showTab('home')" id="tab-home" class="active">🏠<br>Home</div>
@@ -189,41 +108,27 @@ id="basketCount" style="position:absolute;top:-8px;right:-8px;background:red;col
 <script>
 let prices={tomato:30,potato:25,begun:60,fulkopi:35,badhakopi:30,peyaj:45,lau:20,palong:15,biriyani:199,mutton:280,dosa:90,prawn:320,shahi:350,kema:260,boneless:240,sambar:120,kaju:300,dopyaza:290};
 let quantities={tomato:1,potato:1,begun:1,fulkopi:1,badhakopi:1,peyaj:1,lau:1,palong:1,biriyani:1,mutton:1,dosa:1,prawn:1,shahi:1,kema:1,boneless:1,sambar:1,kaju:1,dopyaza:1};
-let units={tomato:"kg",potato:"kg",begun:"kg",fulkopi:"pcs",badhakopi:"pcs",peyaj:"kg",lau:"pcs",palong:"bunch",biriyani:"combo",mutton:"plate",dosa:"pcs",prawn:"plate",shahi:
-  "plate",kema:"plate",boneless:"plate",sambar:"bowl",kaju:"plate",dopyaza:"plate"};
-let names={tomato:"Tomato",potato:"Potato",begun:"Brinjal",fulkopi:"Cauliflower",badhakopi:"Cabbage",peyaj:"Onion",lau:"Bottle Gourd",palong:"Spinach",biriyani:"Biriyani Combo",mutton:
-  "Mutton Sukka",dosa:"Onion Masala Dosa",prawn:"Prawns Biryani",shahi:"Shahi Biryani",kema:"Kema Masala",boneless:"Boneless Chicken",sambar:"Cabbage Sambhar",kaju:"Kaju Chicken Curry",dopyaza:"Mutton Do Pyaza"};
+let units={tomato:"kg",potato:"kg",begun:"kg",fulkopi:"pcs",badhakopi:"pcs",peyaj:"kg",lau:"pcs",palong:"bunch",biriyani:"combo",mutton:"plate",dosa:"pcs",prawn:"plate",shahi:"plate",kema:"plate",boneless:"plate",sambar:"bowl",kaju:"plate",dopyaza:"plate"};
+let names={tomato:"Tomato",potato:"Potato",begun:"Brinjal",fulkopi:"Cauliflower",badhakopi:"Cabbage",peyaj:"Onion",lau:"Bottle Gourd",palong:"Spinach",biriyani:"Biriyani Combo",mutton:"Mutton Sukka",dosa:"Onion Masala Dosa",prawn:"Prawns Biryani",shahi:"Shahi Biryani",kema:"Kema Masala",boneless:"Boneless Chicken",sambar:"Cabbage Sambhar",kaju:"Kaju Chicken Curry",dopyaza:"Mutton Do Pyaza"};
 let cart={},grandTotal=0;
-function searchVeg(){let input=document.getElementById('search').value.toLowerCase();let cards=document.getElementsByClassName('card');for(let c of cards){let t=c.innerText.toLowerCase();
-  c.style.display=t.includes(input)?"":"none";}}
-function filterProd(cat, el){document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));if(el) el.classList.add('active');let cards=document.querySelectorAll
-  ('.card');cards.forEach(c=>{let cats=c.getAttribute('data-cat');if(cat==='all' || cats.includes(cat)) c.style.display='';else c.style.display='none';});}
-function changeQty(item,delta){quantities[item]+=delta;if(quantities[item]<1)quantities[item]=1;document.getElementById('qty-'+item).innerText=quantities[item]+" 
-  "+units[item];document.getElementById('total-'+item).innerText=prices[item]*quantities[item];}
-function addToCart(item){if(!cart[item])cart[item]=0;cart[item]+=quantities[item];quantities[item]=1;document.getElementById('qty-'+item).innerText="1 
-  "+units[item];document.getElementById('total-'+item).innerText=prices[item];updateCartUI();}
+function searchVeg(){let input=document.getElementById('search').value.toLowerCase();let cards=document.getElementsByClassName('card');for(let c of cards){let t=c.innerText.toLowerCase();c.style.display=t.includes(input)?"":"none";}}
+function filterProd(cat, el){
+  document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
+  if(el) el.classList.add('active');
+  document.getElementById('search').value="";
+  let cards=document.querySelectorAll('.card');
+  cards.forEach(c=>{
+    let cats=c.getAttribute('data-cat');
+    if(cat==='all' || cats===cat) c.style.display='';
+    else c.style.display='none';
+  });
+}
+function changeQty(item,delta){quantities[item]+=delta;if(quantities[item]<1)quantities[item]=1;document.getElementById('qty-'+item).innerText=quantities[item]+" "+units[item];document.getElementById('total-'+item).innerText=prices[item]*quantities[item];}
+function addToCart(item){if(!cart[item])cart[item]=0;cart[item]+=quantities[item];quantities[item]=1;document.getElementById('qty-'+item).innerText="1 "+units[item];document.getElementById('total-'+item).innerText=prices[item];updateCartUI();}
 function changeCartQty(item,delta){cart[item]+=delta;if(cart[item]<=0){delete cart[item];}updateCartUI();}
-function updateCartUI(){let total=0,count=0;for(let k in cart){total+=prices[k]*cart[k];count+=cart[k];}grandTotal=total;document.getElementById('basketTotal').
-  innerText=total+".00";document.getElementById('basketCount').innerText=count;document.getElementById('grand-total').innerText=total;document.getElementById('basketBar')
-  .style.display=count>0?"flex":"none";let delivery=total>0&&total<500?30:0;document.getElementById('delivery-charge').innerText=delivery;document.getElementById('payable-total')
-  .innerText=total+delivery;let div=document.getElementById('cart-items');div.innerHTML="";for(let k in cart){div.innerHTML
-  +=`<div style="display:flex;justify-content:space-between;align-items:center;margin:8px 0;background:#f5f5f5;padding:8px 10px;border-radius:10px">
-  <div>${names[k]} = ₹${prices[k]*cart[k]}</div><div style="display:flex;gap:6px;align-items:center"><button onclick="changeCartQty('${k}',-1)
-  " style="width:26px;height:26px;border-radius:50%;border:none;background:#ffcdd2">-</button><span>${cart[k]}</span><button onclick="changeCartQty('${k}',1)
-  " style="width:26px;height:26px;border-radius:50%;border:none;background:#c8e6c9">+</button><button onclick="changeCartQty('${k}',-${cart[k]})" style="border:none;background:none">🗑️</button>
-  </div></div>`;}if(count>0)document.getElementById('cart').style.display='block';}
-function checkout(){if(grandTotal==0){alert("Cart খালি!");return;}if(grandTotal<199){alert("Min 199 টাকা লাগবে!");return;}let name=document.getElementById('cust-name')
-  .value;let phone=document.getElementById('cust-phone').value;let address=document.getElementById('cust-address').value;if(!name||!phone){alert("নাম ও ফোন দিন!")
-  ;return;}let itemsList="";for(let k in cart){itemsList+=`${names[k]} - ${cart[k]} ${units[k]} (Rs.${prices[k]*cart[k]})%0A`;}
-      let delivery=grandTotal<500?30:0;let payable=grandTotal+delivery;let orderText=`*New Order - FreshCart*%0A%0A👤 Name: 
-      ${name}%0A📞 Phone: ${phone}%0A📍 Address: ${address}%0A%0A🛒 *Items:*%0A${itemsList}%0A💰 Subtotal: Rs.${grandTotal}%0A🚚 Delivery: Rs.${
-        delivery}%0A*✅ Payable: Rs.${payable}*`;window.open(`https://wa.me/917584036364?text=${orderText}`);}
-function showTab(tab){document.getElementById('home-content').style.display=tab=='home'?'':'none';document.getElementById('cart')
-  .style.display=tab=='home'?document.getElementById('cart').style.display:'none';document.getElementById('orders-section')
-  .style.display=tab=='orders'?'block':'none';document.getElementById('wishlist-section').style.display=tab=='wishlist'?'block':'none';
-     document.getElementById('profile-section').style.display=tab=='profile'?'block':'none';document.getElementById('tab-home')
-       .className=tab=='home'?'active':'';document.getElementById('tab-orders').className=tab=='orders'?'active':'';document.getElementById('tab-wish')
-       .className=tab=='wishlist'?'active':'';document.getElementById('tab-profile').className=tab=='profile'?'active':'';window.scrollTo(0,0);}
+function updateCartUI(){let total=0,count=0;for(let k in cart){total+=prices[k]*cart[k];count+=cart[k];}grandTotal=total;document.getElementById('basketTotal').innerText=total+".00";document.getElementById('basketCount').innerText=count;document.getElementById('grand-total').innerText=total;document.getElementById('basketBar').style.display=count>0?"flex":"none";let delivery=total>0&&total<500?30:0;document.getElementById('delivery-charge').innerText=delivery;document.getElementById('payable-total').innerText=total+delivery;let div=document.getElementById('cart-items');div.innerHTML="";for(let k in cart){div.innerHTML+=`<div style="display:flex;justify-content:space-between;align-items:center;margin:8px 0;background:#f5f5f5;padding:8px 10px;border-radius:10px"><div>${names[k]} = ₹${prices[k]*cart[k]}</div><div style="display:flex;gap:6px;align-items:center"><button onclick="changeCartQty('${k}',-1)" style="width:26px;height:26px;border-radius:50%;border:none;background:#ffcdd2">-</button><span>${cart[k]}</span><button onclick="changeCartQty('${k}',1)" style="width:26px;height:26px;border-radius:50%;border:none;background:#c8e6c9">+</button><button onclick="changeCartQty('${k}',-${cart[k]})" style="border:none;background:none">🗑️</button></div></div>`;}if(count>0)document.getElementById('cart').style.display='block';}
+function checkout(){if(grandTotal==0){alert("Cart খালি!");return;}if(grandTotal<199){alert("Min 199 টাকা লাগবে!");return;}let name=document.getElementById('cust-name').value;let phone=document.getElementById('cust-phone').value;let address=document.getElementById('cust-address').value;if(!name||!phone){alert("নাম ও ফোন দিন!");return;}let itemsList="";for(let k in cart){itemsList+=`${names[k]} - ${cart[k]} ${units[k]} (Rs.${prices[k]*cart[k]})%0A`;}let delivery=grandTotal<500?30:0;let payable=grandTotal+delivery;let orderText=`*New Order - FreshCart*%0A%0A👤 Name: ${name}%0A📞 Phone: ${phone}%0A📍 Address: ${address}%0A%0A🛒 *Items:*%0A${itemsList}%0A💰 Subtotal: Rs.${grandTotal}%0A🚚 Delivery: Rs.${delivery}%0A*✅ Payable: Rs.${payable}*`;window.open(`https://wa.me/917584036364?text=${orderText}`);}
+function showTab(tab){document.getElementById('home-content').style.display=tab=='home'?'':'none';document.getElementById('cart').style.display=tab=='home'?document.getElementById('cart').style.display:'none';document.getElementById('orders-section').style.display=tab=='orders'?'block':'none';document.getElementById('wishlist-section').style.display=tab=='wishlist'?'block':'none';document.getElementById('profile-section').style.display=tab=='profile'?'block':'none';document.getElementById('tab-home').className=tab=='home'?'active':'';document.getElementById('tab-orders').className=tab=='orders'?'active':'';document.getElementById('tab-wish').className=tab=='wishlist'?'active':'';document.getElementById('tab-profile').className=tab=='profile'?'active':'';window.scrollTo(0,0);}
 </script>
 </body>
 </html>
