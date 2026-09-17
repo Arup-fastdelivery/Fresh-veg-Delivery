@@ -51,10 +51,14 @@ body{background:#e8f5e9;padding-bottom:160px}
 
 <div class="filters">
   <button class="filter active" onclick="filterProd('all', this)">🌿 All</button>
-  <button class="filter" onclick="filterProd('vegetables', this)">🥕 Vegetables</button>
-  <button class="filter" onclick="filterProd('herbs', this)">🌿 Herbs</button>
-  <button class="filter" onclick="filterProd('cooking', this)">🍳 Cooking ideas</button>
-  <button class="filter" onclick="filterProd('biriyani', this)">🍛 Biriyani option</button>
+  <button class="filter" onclick="filterProd('grocery', this)">🛒 Grocery & Kitchen</button>
+  <button class="filter" onclick="filterProd('snacks', this)">🥤 Snacks & Drinks</button>
+  <button class="filter" onclick="filterProd('beauty', this)">💄 Beauty & Personal Care</button>
+  <button class="filter" onclick="filterProd('household', this)">🏠 Household Essentials</button>
+  <button class="filter" onclick="filterProd('deals', this)">🔥 Hot Deals</button>
+  <button class="filter" onclick="filterProd('fresh', this)">🥬 Your Daily Fresh Needs</button>
+  <button class="filter" onclick="filterProd('snack', this)">🍿 Snacks it Away</button>
+  <button class="filter" onclick="filterProd('cooking', this)">🍳 Cooking Ideas</button>
 </div>
 
 <div id="home-content">
@@ -62,12 +66,21 @@ body{background:#e8f5e9;padding-bottom:160px}
 <button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now →</button></div>
   <img src="banner.jpeg" style="width:115px;height:115px;object-fit:cover;border-radius:16px;" onerror="this.src='https://via.placeholder.com/115'"></div>
 
-<div class="products" id="products" style="margin-top:14px">
-<div class="card" data-cat="biriyani"><img src="biriyani.jpeg" onerror="this.src='https://via.placeholder.com/150'">
-  <h3>Biriyani Special Combo</h3><div class="price">₹199<span>/combo</span></div><div class="qty"><button onclick="changeQty('biriyani',-1)">−</button>
-    <span id="qty-biriyani">1 combo</span><button onclick="changeQty('biriyani',1)">+</button></div><div class="total">Total: ₹<span id="total-biriyani">199</span>
-    </div><button class="add" onclick="addToCart('biriyani')">🛒 Add</button></div>
+<div class="card" data-cat="grocery fresh vegetables"><img src="tomato.jpg"><h3>Tomato</h3><div class="price">₹30<span>/kg</span></div><div class="qty"><button onclick="changeQty('tomato',-1)">−</button><span id="qty-tomato">1 kg</span><button onclick="changeQty('tomato',1)">+</button></div><div class="total">Total: ₹<span id="total-tomato">30</span></div><button class="add" onclick="addToCart('tomato')">🛒 Add</button></div>
 
+<div class="card" data-cat="grocery fresh snack cooking"><img src="potato.jpg"><h3>Potato</h3><div class="price">₹25<span>/kg</span></div><div class="qty"><button onclick="changeQty('potato',-1)">−</button><span id="qty-potato">1 kg</span><button onclick="changeQty('potato',1)">+</button></div><div class="total">Total: ₹<span id="total-potato">25</span></div><button class="add" onclick="addToCart('potato')">🛒 Add</button></div>
+
+<div class="card" data-cat="grocery fresh cooking"><img src="begun.jpg"><h3>Brinjal</h3><div class="price">₹40<span>/kg</span></div><div class="qty"><button onclick="changeQty('begun',-1)">−</button><span id="qty-begun">1 kg</span><button onclick="changeQty('begun',1)">+</button></div><div class="total">Total: ₹<span id="total-begun">40</span></div><button class="add" onclick="addToCart('begun')">🛒 Add</button></div>
+
+<div class="card" data-cat="grocery fresh cooking"><img src="fulkopi.jpg"><h3>Cauliflower</h3><div class="price">₹35<span>/pcs</span></div><div class="qty"><button onclick="changeQty('fulkopi',-1)">−</button><span id="qty-fulkopi">1 pcs</span><button onclick="changeQty('fulkopi',1)">+</button></div><div class="total">Total: ₹<span id="total-fulkopi">35</span></div><button class="add" onclick="addToCart('fulkopi')">🛒 Add</button></div>
+
+<div class="card" data-cat="grocery fresh cooking"><img src="badhakopi.jpg"><h3>Cabbage</h3><div class="price">₹30<span>/pcs</span></div><div class="qty"><button onclick="changeQty('badhakopi',-1)">−</button><span id="qty-badhakopi">1 pcs</span><button onclick="changeQty('badhakopi',1)">+</button></div><div class="total">Total: ₹<span id="total-badhakopi">30</span></div><button class="add" onclick="addToCart('badhakopi')">🛒 Add</button></div>
+
+<div class="card" data-cat="grocery fresh cooking"><img src="peyaj.jpg"><h3>Onion</h3><div class="price">₹45<span>/kg</span></div><div class="qty"><button onclick="changeQty('peyaj',-1)">−</button><span id="qty-peyaj">1 kg</span><button onclick="changeQty('peyaj',1)">+</button></div><div class="total">Total: ₹<span id="total-peyaj">45</span></div><button class="add" onclick="addToCart('peyaj')">🛒 Add</button></div>
+
+<div class="card" data-cat="grocery fresh cooking deals"><img src="lau.jpeg"><h3>Bottle Gourd</h3><div class="price">₹20<span>/pcs</span></div><div class="qty"><button onclick="changeQty('lau',-1)">−</button><span id="qty-lau">1 pcs</span><button onclick="changeQty('lau',1)">+</button></div><div class="total">Total: ₹<span id="total-lau">20</span></div><button class="add" onclick="addToCart('lau')">🛒 Add</button></div>
+
+<div class="card" data-cat="grocery fresh cooking beauty household"><img src="palong.jpeg"><h3>Spinach</h3><div class="price">₹15<span>/bunch</span></div><div class="qty"><button onclick="changeQty('palong',-1)">−</button><span id="qty-palong">1 bunch</span><button onclick="changeQty('palong',1)">+</button></div><div class="total">Total: ₹<span id="total-palong">15</span></div><button class="add" onclick="addToCart('palong')">🛒 Add</button></div>
 <div class="card" data-cat="cooking"><img src="mutton.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Mutton Sukka</h3><div class="price">₹280<span>/plate</span></div><div class="qty"><button onclick="changeQty('mutton',-1)">−</button><span id="qty-mutton">1 plate</span><button onclick="changeQty('mutton',1)">+</button></div><div class="total">Total: ₹<span id="total-mutton">280</span></div><button class="add" onclick="addToCart('mutton')">Add</button></div>
 <div class="card" data-cat="cooking"><img src="dosa.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Onion Masala Dosa</h3><div class="price">₹90<span>/pcs</span></div><div class="qty"><button onclick="changeQty('dosa',-1)">−</button><span id="qty-dosa">1 pcs</span><button onclick="changeQty('dosa',1)">+</button></div><div class="total">Total: ₹<span id="total-dosa">90</span></div><button class="add" onclick="addToCart('dosa')">Add</button></div>
 <div class="card" data-cat="cooking"><img src="prawn.jpg" onerror="this.src='https://via.placeholder.com/150'"><h3>Prawns Biryani</h3><div class="price">₹320<span>/plate</span></div><div class="qty"><button onclick="changeQty('prawn',-1)">−</button><span id="qty-prawn">1 plate</span><button onclick="changeQty('prawn',1)">+</button></div><div class="total">Total: ₹<span id="total-prawn">320</span></div><button class="add" onclick="addToCart('prawn')">Add</button></div>
@@ -116,11 +129,9 @@ function filterProd(cat, el){
   document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
   if(el) el.classList.add('active');
   document.getElementById('search').value="";
-  let cards=document.querySelectorAll('.card');
-  cards.forEach(c=>{
-    let cats=c.getAttribute('data-cat');
-    if(cat==='all' || cats===cat) c.style.display='';
-    else c.style.display='none';
+  document.querySelectorAll('.card').forEach(c=>{
+    let cats = c.getAttribute('data-cat').split(' ');
+    c.style.display = (cat==='all' || cats.includes(cat)) ? '' : 'none';
   });
 }
 function changeQty(item,delta){quantities[item]+=delta;if(quantities[item]<1)quantities[item]=1;document.getElementById('qty-'+item).innerText=quantities[item]+" "+units[item];document.getElementById('total-'+item).innerText=prices[item]*quantities[item];}
