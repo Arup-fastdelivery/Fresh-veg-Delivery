@@ -2,29 +2,29 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FreshCart - Hemtabad</title>
+<title>FreshCart - All in One</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial}
-body{background:#e8f5e9;padding-bottom:160px}
-.header{display:flex;justify-content:space-between;align-items:center;padding:16px;background:#e8f5e9}
-.search-box{flex:1;background:white;border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05);margin:0 16px 10px 16px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial}body{background:#e8f5e9;padding-bottom:160px}
+.header{display:flex;justify-content:space-between;align-items:center;padding:15px 16px;background:#e8f5e9}
+.search-box{flex:1;background:white;border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05); margin:0 16px 10px 16px}
 .search-box input{border:none;outline:none;width:100%;font-size:14px}
-.filters{display:flex;gap:10px;padding:0 16px 14px 16px;overflow-x:auto;white-space:nowrap}.filter{border:none;padding:9px 16px;border-radius:20px;background:white;font-size:13px;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,0.08)}.filter.active{background:#2e7d32;color:white}
-.banner{margin:10px 16px;background:white;border-radius:18px;padding:8px;display:flex;justify-content:center;align-items:center;overflow:hidden}
-.banner div:first-child{display:none !important}
-.banner img{display:block;width:100%;max-width:100%;height:auto;object-fit:contain;border-radius:12px}
+.filters{display:flex;gap:10px;padding:0 16px 14px 16px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}.filters::-webkit-scrollbar{display:none}
+.filter{border:none;padding:9px 16px;border-radius:20px;background:white;font-size:13px;font-weight:600;flex-shrink:0;box-shadow:0 1px 3px rgba(0,0,0,0.08);cursor:pointer}.filter.active{background:#2e7d32;color:white}
+.banner{margin:0 16px 14px 16px;background:linear-gradient(90deg,#c5e1a5 0%, #81c784 100%);border-radius:18px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
+.banner h1{font-size:24px;color:#2e7d32;line-height:1;font-style:italic}.banner p{font-size:10px;margin:8px 0;color:#333}.       czxv
+.banner button{background:#2e7d32;color:white;border:none;padding:8px 14px;border-radius:20px;font-size:12px}
 .products{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:0 12px}
-.card{background:white;border-radius:18px;padding:12px;box-shadow:0 4px 12px rgba(0,0,0,0.05)}.card img{width:100%;height:90px;object-fit:contain;background:#f9f9f9;border-radius:12px;padding:12px}
-.card h3{font-size:13px;margin-top:8px}.price{color:#2e7d32;font-weight:800;font-size:14px}.price span{font-size:11px;color:#555}
-.qty{display:flex;justify-content:center;gap:10px;margin:8px 0}.qty button{width:24px;height:24px;border-radius:50%;border:none;background:#c8e6c9;color:#2e7d32}
-.add{width:100%;background:#2e7d32;color:white;border:none;padding:9px;border-radius:20px;font-size:12px;margin-top:6px}.total{font-size:11px;text-align:center;color:#2e7d32}
-.basket{position:fixed;bottom:75px;left:12px;right:12px;background:#2e7d32;border-radius:16px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;color:white}
-.bottom{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:12px 0 8px 0;border-top:1px solid #eee}.bottom div{text-align:center;font-size:10px}
+.card{background:white;border-radius:18px;padding:12px;box-shadow:0 4px 12px rgba(0,0,0,0.05)}.card img{width:100%;height:90px;object-fit:contain;background:#f9f9f9;border-radius:12px}
+.card h3{font-size:13px;margin-top:8px;color:#222;height:32px;overflow:hidden}.price{color:#2e7d32;font-weight:800;font-size:14px}.price span{font-weight:400;font-size:11px;color:#555}
+.qty{display:flex;align-items:center;justify-content:center;gap:10px;margin:8px 0}.qty button{width:24px;height:24px;border-radius:50%;border:none;background:#c8e6c9;color:#2e7d32;font-weight:bold}
+.add{width:100%;background:#2e7d32;color:white;border:none;padding:9px;border-radius:20px;font-size:12px;font-weight:600;margin-top:6px}.total{font-size:11px;text-align:center;color:#555;font-weight:600}
+.basket{position:fixed;bottom:75px;left:12px;right:12px;background:#2e7d32;border-radius:16px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;z-index:10;color:white}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:12px 0 8px 0;border-top:1px solid #eee;z-index:11}.bottom div{text-align:center;font-size:11px;color:#888}.bottom div.active{color:#2e7d32;font-weight:700}
 #cart{margin:16px;background:white;padding:16px;border-radius:16px;display:none}
 </style>
 </head>
 <body>
-<div class="header"><div>🟢 ROOP<br><span style="font-size:11px;color:#666">First Delivery Home</span></div><div style="font-size:12px;">📍 Hemtabad</div></div>
+<div class="header"><div>🌿 FreshCart<br><span style="font-size:11px;color:#666">All in One Store</span></div></div>
 <div class="search-box">🔍 <input type="text" id="search" placeholder="Search anything..." onkeyup="searchVeg()"></div>
 
 <div class="filters">
@@ -39,17 +39,12 @@ body{background:#e8f5e9;padding-bottom:160px}
   <button class="filter" onclick="filterProd('cooking', this)">🍳 Cooking Ideas</button>
 </div>
 
-<div class="banner" style="background-image: url('banner.jpg'); background-size: cover; background-position: center; padding: 50px 20px; border-radius: 15px; text-align: center; color: #1b5e20;">
-  <div style="background: rgba(255,255,255,0.85); padding: 25px; border-radius: 15px; display: inline-block;">
-    <h1 style="font-size: 36px; margin:0; line-height:1.2;">Fresh<br>Healthy<br>Natural</h1>
-    <p style="font-size:18px; margin:10px 0;">100% Fresh & Original Products - Faridabad</p>
-    <button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})" style="background:#2e7d32; color:white; border:none; padding:12px 25px; border-radius:25px; font-weight:700; margin-top:10px; cursor:pointer;">Shop Now →</button>
-  </div>
-</div>
+<div class="banner"><div><h1>Fresh<br>Healthy<br>Natural</h1><p>100% Fresh & Original Products</p><button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now →</button></div><img src=roop-icon-512.png style="width:115px;height:115px;object-fit:cover;border-radius:16px" src="roop-icon-512.png"></div>
 
-<div id="products" class="products"></div>
+<div class="products" id="products"></div>
 <div id="cart"><h3>🛒 My Basket</h3><div id="cart-items" style="margin:10px 0"></div><p>Subtotal: ₹<span id="grand-total">0</span> | Delivery: ₹<span id="delivery-charge">0</span> | <b>Payable: ₹<span id="payable-total">0</span></b></p><input id="cust-name" placeholder="Your Name" style="width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:8px"><input id="cust-phone" placeholder="Phone Number" style="width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:8px"><textarea id="cust-address" placeholder="Full Address" style="width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:8px"></textarea><button onclick="checkout()" style="width:100%;background:#22c55e;color:white;padding:12px;border:none;border-radius:10px;font-weight:bold">Checkout via WhatsApp</button></div>
-div class="basket" id="basketBar" style="display:none"><div style="display:flex;gap:10px;align-items:center">🧺 Rs. <span id="basketTotal">0</span> (<span id="basketCount">0</span>)</div><button onclick="document.getElementById('cart').style.display='block';document.getElementById('cart').scrollIntoView({behavior:'smooth'})" style="background:white;color:#2e7d32;border:none;padding:10px 18px;border-radius:20px;font-weight:700">View Cart →</button></div>
+
+<div class="basket" id="basketBar" style="display:none"><div style="display:flex;gap:10px;align-items:center">🧺 Rs. <span id="basketTotal">0</span> (<span id="basketCount">0</span>)</div><button onclick="document.getElementById('cart').style.display='block';document.getElementById('cart').scrollIntoView({behavior:'smooth'})" style="background:white;color:#2e7d32;border:none;padding:10px 18px;border-radius:20px;font-weight:700">View Cart →</button></div>
 
 <script>
 // ===== তোমার সব Product List =====
@@ -144,4 +139,3 @@ function checkout(){if(grandTotal==0){alert("Cart খালি!");return;}let na
 </script>
 </body>
 </html>
-
