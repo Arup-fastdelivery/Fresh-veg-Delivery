@@ -39,7 +39,14 @@
   <button class="filter" onclick="filterProd('cooking', this)">🍳 Cooking Ideas</button>
 </div>
 
-<div class="banner"><div><h1>Fresh<br>Healthy<br>Natural</h1><p>100% Fresh & Original Products</p><button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now →</button></div><img src=roop-icon-512.png style="width:160px;height:120px;object-fit:contain;border-radius:18px;background:white;padding: 4px">
+<div class="banner" style="display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#e8f5e9,#c8e6c9);padding:15px;border-radius:20px;height:130px;">
+  <div style="flex:1;">
+    <h2 style="color:#2e7d32;font-size:18px;line-height:1.2;margin:0;">Fresh<br>Healthy<br>Natural</h2>
+    <p style="font-size:10px;margin:4px 0;">100% Fresh &<br>Original Products</p>
+    <button style="font-size:10px;padding:4px 8px;">Shop Now →</button>
+  </div>
+  <img src="roop-icon-512.png" style="width:165px;height:110px;object-fit:contain;margin-left:10px;transform:translateX(12px);">
+</div>
 
 <div class="products" id="products"></div>
 <div id="cart"><h3>🛒 My Basket</h3><div id="cart-items" style="margin:10px 0"></div><p>Subtotal: ₹<span id="grand-total">0</span> | Delivery: ₹<span id="delivery-charge">0</span> | <b>Payable: ₹<span id="payable-total">0</span></b></p><input id="cust-name" placeholder="Your Name" style="width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:8px"><input id="cust-phone" placeholder="Phone Number" style="width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:8px"><textarea id="cust-address" placeholder="Full Address" style="width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:8px"></textarea><button onclick="checkout()" style="width:100%;background:#22c55e;color:white;padding:12px;border:none;border-radius:10px;font-weight:bold">Checkout via WhatsApp</button></div>
