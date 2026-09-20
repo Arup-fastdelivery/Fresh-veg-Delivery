@@ -12,7 +12,9 @@ body{background:#e8f5e9;padding-bottom:160px}
 .filters{display:flex;gap:10px;padding:0 16px 14px 16px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}.filters::-webkit-scrollbar{display:none}
 .filter{border:none;padding:9px 16px;border-radius:20px;background:white;font-size:13px;font-weight:600;flex-shrink:0;box-shadow:0 1px 3px rgba(0,0,0,0.08);cursor:pointer}.filter.active{background:#2e7d32;color:white}
 .banner{margin:0 16px 14px 16px;border-radius:18px;padding:14px;position:relative !important;overflow:hidden !important;min-height:150px;display:flex !important;align-items:center !important;}
-.banner div:first-child{position:relative !important;z-index:2 !important;width:60% !important;}
+.banner{margin:0 16px 14px 16px;border-radius:18px;padding:0 !important;overflow:hidden !important;background:white !important;display:block !important;}
+.banner div:first-child{display:none !important;}
+.banner img{display:block !important;position:static !important;width:100% !important;height:auto !important;object-fit:contain !important;}
 .banner h1{font-size:22px !important;color:#1b5e20 !important;line-height:1.1 !important;font-style:italic !important;font-weight:900 !important;text-shadow:1px 1px 0px white !important;}
 .banner p{font-size:10px;margin:8px 0;color:#222;font-weight:600;text-shadow:1px 1px 0px white;}
 .banner button{border:none;background:#2e7d32;color:white;padding:8px 16px;border-radius:20px;font-size:12px;font-weight:700;box-shadow:0 2px 5px rgba(0,0,0,0.2);}
